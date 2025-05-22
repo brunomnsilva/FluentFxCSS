@@ -1,5 +1,6 @@
 package com.brunomnsilva.fluentfxcss.definitions;
 
+import com.brunomnsilva.fluentfxcss.enums.PseudoClassValue;
 import com.brunomnsilva.fluentfxcss.stylers.NodeStyler;
 import javafx.scene.Node;
 import java.util.Map;
@@ -126,6 +127,21 @@ public interface StyleDefinition {
      * @see #toCssRule(String)
      */
     String toCssPseudoClass(String baseClassName, String pseudoClass);
+
+    /**
+     * Converts this style definition into a CSS pseudo-class rule string, applied to a given base class,
+     * using a predefined {@link PseudoClassValue}.
+     * This is the recommended method for common JavaFX pseudo-classes.
+     *
+     * @param baseClassName The name of the base CSS class (e.g., "my-button"). The leading dot is added automatically.
+     * @param pseudoClassEnum The {@link PseudoClassValue} representing the desired pseudo-class state. Must not be null.
+     * @return A string representing the CSS pseudo-class rule (e.g., ".my-button:hover { ... }").
+     * @throws IllegalArgumentException if baseClassName is null or empty.
+     * @throws IllegalArgumentException if pseudoClassEnum is null.
+     * @see #toCssRule(String)
+     * @see #toCssPseudoClass(String, String)
+     */
+    String toCssPseudoClass(String baseClassName, PseudoClassValue pseudoClassEnum);
 
     /**
      * Gets the underlying map of CSS properties and values.

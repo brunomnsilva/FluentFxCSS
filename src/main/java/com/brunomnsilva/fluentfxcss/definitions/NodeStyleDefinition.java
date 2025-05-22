@@ -1,5 +1,6 @@
 package com.brunomnsilva.fluentfxcss.definitions;
 
+import com.brunomnsilva.fluentfxcss.enums.PseudoClassValue;
 import com.brunomnsilva.fluentfxcss.stylers.NodeStyler;
 import com.brunomnsilva.fluentfxcss.util.Args;
 import javafx.scene.Node;
@@ -107,6 +108,16 @@ public class NodeStyleDefinition implements StyleDefinition {
         return toCssRule("." + baseClassName.trim() + ":" + pseudoClass.trim()); // Delegates
     }
 
+    @Override
+    public String toCssPseudoClass(String baseClassName, PseudoClassValue pseudoClassEnum) {
+        Args.requireNotNull(baseClassName, "baseClassName");
+        Args.requireNotEmpty(baseClassName, "baseClassName");
+        Args.requireMatches(baseClassName, "^[a-zA-Z_][a-zA-Z0-9_-]*$", "baseClassName");
+
+        Args.requireNotNull(pseudoClassEnum, "pseudoClassEnum");
+
+        return toCssRule("." + baseClassName.trim() + pseudoClassEnum.getCssSelectorSuffix());
+    }
 
     @Override
     public Map<String, String> getStylesMap() {
