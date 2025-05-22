@@ -110,6 +110,37 @@ public abstract class TextStyler<S extends TextStyler<S, D>, D extends StyleDefi
         return self();
     }
 
+    /**
+     * Sets multiple font properties (family, weight, posture, and size) at once
+     * using a JavaFX {@link Font} object.
+     * <p>
+     * This method acts as a convenient way to apply a complete font definition.
+     * Calling this method will effectively override any individual font properties
+     * (e.g., {@link #fontFamily(String)}, {@link #fontSize(double)}, {@link #fontWeight(FontWeight)},
+     * {@link #fontStyle(FontPosture)}) that were set previously on this styler instance,
+     * as it calls these individual setter methods with values extracted from the provided {@code Font} object.
+     * </p>
+     * <p>
+     * The font size extracted from the {@code Font} object (which is in points) will be
+     * set using {@link UnitValue#PT}.
+     * </p>
+     *
+     * @param font The {@link Font} object to extract styling information from. Must not be null.
+     * @return This styler instance for chaining.
+     * @throws IllegalArgumentException if the font is null.
+     */
+    public S font(Font font) {
+        Args.requireNotNull(font, "font");
+
+        // Extract properties from the Font object and call existing methods
+        fontFamily(font.getFamily());
+        fontWeight(FontWeight.findByName(font.getStyle()));
+        fontStyle(FontPosture.findByName(font.getStyle()));
+        fontSize(font.getSize()); // Sets -fx-font-size in PT (as fontSize method defaults to PT)
+
+        return self();
+    }
+
     // --- Text-specific Properties ---
 
     /**
