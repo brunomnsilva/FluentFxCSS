@@ -49,7 +49,6 @@ public abstract class RegionStyler<S extends RegionStyler<S, D>, D extends Style
 
     /**
      * Converts a JavaFX {@link Paint} object to its corresponding CSS string representation.
-     * <p>
      * This method handles:
      * <ul>
      *     <li>{@link Color}: Converts to a CSS color string (e.g., "#RRGGBBAA", "rgba(...)").</li>
@@ -59,7 +58,6 @@ public abstract class RegionStyler<S extends RegionStyler<S, D>, D extends Style
      * If the provided {@code paint} is null, it defaults to "transparent".
      * For other {@code Paint} subtypes not explicitly handled, it falls back to calling
      * {@code paint.toString()}, which may or may not produce a valid CSS value.
-     * </p>
      *
      * @param paint The {@link Paint} object to convert (e.g., Color, LinearGradient, RadialGradient).
      *              Can be null.
@@ -410,7 +408,6 @@ public abstract class RegionStyler<S extends RegionStyler<S, D>, D extends Style
      * This allows for creating non-rectangular regions. The coordinates in the SVG path
      * are relative to the region's top-left corner (0,0).
      * </p>
-     * <p>
      * Example of an SVG path for a simple rounded rectangle (though {@code -fx-background-radius}
      * and {@code -fx-border-radius} are usually preferred for this specific case):
      * <pre>{@code "M0,10 A10,10 0 0 1 10,0 L90,0 A10,10 0 0 1 100,10 L100,90 A10,10 0 0 1 90,100 L10,100 A10,10 0 0 1 0,90 Z"}</pre>
@@ -420,11 +417,8 @@ public abstract class RegionStyler<S extends RegionStyler<S, D>, D extends Style
      * <pre>{@code "M 0,50 A 50,50 0 1 1 100,50 A 50,50 0 1 1 0,50 Z"} assuming a 100x50 region to make a half circle effect</pre>
      * A proper circle fitting a 100x100 region would be:
      * <pre>{@code "M 0,50 C 0,22.38 22.38,0 50,0 C 77.62,0 100,22.38 100,50 C 100,77.62 77.62,100 50,100 C 22.38,100 0,77.62 0,50 Z"}</pre>
-     * </p>
-     * <p>
      * If the provided SVG path string is null or empty, the {@code -fx-shape} property
      * will be set to {@code "null"}.
-     * </p>
      *
      * @param svgPath The SVG path string defining the shape. Can be null or empty.
      *                If null or effectively empty, the property will be set to {@code "null"}.

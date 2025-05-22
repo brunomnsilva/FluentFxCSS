@@ -12,7 +12,6 @@ import java.util.Map;
  * from {@link com.brunomnsilva.fluentfxcss.FluentFxCss}). Once built, it encapsulates
  * a collection of CSS property-value pairs.
  * </p>
- * <p>
  * This definition can then be used to:
  * <ul>
  *     <li>Apply the styles directly to a JavaFX {@link Node} as an inline style.</li>
@@ -20,7 +19,6 @@ import java.util.Map;
  *     <li>Generate CSS rule strings for inclusion in a stylesheet (e.g., as a CSS class).</li>
  *     <li>Be merged with other {@code StyleDefinition} objects.</li>
  * </ul>
- * </p>
  * Implementations are expected to be immutable or effectively immutable after creation.
  *
  * @see com.brunomnsilva.fluentfxcss.FluentFxCss
@@ -84,7 +82,6 @@ public interface StyleDefinition {
     /**
      * Converts this style definition into a complete CSS rule string using the provided selector.
      * This is the most flexible method for generating CSS rules.
-     * <p>
      * Example: {@code toCssRule(".my-custom-element:hover")} would produce:
      * <pre>{@code
      * .my-custom-element:hover {
@@ -92,7 +89,6 @@ public interface StyleDefinition {
      *     -fx-property2: value2;
      * }
      * }</pre>
-     * </p>
      *
      * @param selector The full CSS selector (e.g., ".my-class", "#my-id:active", "VBox > .child-class").
      *                 The caller is responsible for providing a syntactically valid CSS selector.

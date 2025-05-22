@@ -161,6 +161,10 @@ public class FluentFxCssDemo extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Entry point.
+     * @param args argument list
+     */
     public static void main(String[] args) {
         launch(args);
     }

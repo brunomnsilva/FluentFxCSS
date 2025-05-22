@@ -49,7 +49,6 @@ public abstract class ShapeStyler<S extends ShapeStyler<S, D>, D extends StyleDe
 
     /**
      * Sets the {@code -fx-fill} CSS property, defining the paint used to fill the interior of the shape or text.
-     * <p>
      * This method accepts any {@link Paint} object. The underlying {@link CssHelper#toCssPaint(Paint)}
      * method will attempt to convert it into a valid CSS string representation.
      * Currently, it supports:
@@ -62,7 +61,6 @@ public abstract class ShapeStyler<S extends ShapeStyler<S, D>, D extends StyleDe
      * might be effectively unset depending on the CSS engine's interpretation of an empty or transparent fill.
      * For other {@code Paint} subtypes not explicitly handled by {@code CssHelper.toCssPaint} (e.g., {@code ImagePattern}),
      * the conversion will fall back to {@code paint.toString()}, which may not produce a valid CSS syntax.
-     * </p>
      * <p>
      * When used in {@link TextStyler}, this method effectively sets the text color.
      * </p>

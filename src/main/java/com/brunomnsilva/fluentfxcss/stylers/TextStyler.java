@@ -52,7 +52,6 @@ public abstract class TextStyler<S extends TextStyler<S, D>, D extends StyleDefi
      * a semantically clearer way to set the text's appearance when compared to using
      * the generic {@code fill()} method inherited from {@link ShapeStyler}.
      * </p>
-     * <p>
      * This method accepts any {@link Paint} object. The underlying {@link com.brunomnsilva.fluentfxcss.util.CssHelper#toCssPaint(Paint)}
      * method will attempt to convert it into a valid CSS string representation.
      * Supported {@code Paint} types include:
@@ -62,7 +61,6 @@ public abstract class TextStyler<S extends TextStyler<S, D>, D extends StyleDefi
      *     <li>{@link javafx.scene.paint.RadialGradient}: Converted to a CSS {@code radial-gradient(...)} string.</li>
      * </ul>
      * If a {@code null} paint is provided, the fill is set to "transparent".
-     * </p>
      *
      * @param paint The {@link Paint} to use for the text's fill (e.g., {@code Color},
      *              {@code LinearGradient}, {@code RadialGradient}). Can be null.

@@ -49,9 +49,12 @@ import java.util.Map;
  */
 public abstract class NodeStyler<S extends NodeStyler<S, D>, D extends StyleDefinition> {
 
-    /** property:value mappings */
+    /** Property/Value mappings  */
     protected final Map<String, String> styles = new LinkedHashMap<>();
 
+    /**
+     * Base constructor.
+     */
     protected NodeStyler() {
     }
 
@@ -121,20 +124,18 @@ public abstract class NodeStyler<S extends NodeStyler<S, D>, D extends StyleDefi
     /**
      * Sets the {@code -fx-effect} CSS property with a drop shadow.
      * Applies a drop shadow effect to the node.
-     * <p>
-     *     Other applied defaults:
-     *     <ul>
-     *         <li>{@code blurType = BlurType.THREE_PASS_BOX}</li>
-     *         <li>{@code spread = 0}</li>
-     *     </ul>
-     * </p>
+     * Other applied defaults:
+     * <ul>
+     *     <li>{@code blurType = BlurType.THREE_PASS_BOX}</li>
+     *     <li>{@code spread = 0}</li>
+     * </ul>
      * @param color   The color of the drop shadow.
      * @param radius  The radius of the shadow blur.
      * @param offsetX The horizontal offset of the shadow.
      * @param offsetY The vertical offset of the shadow.
      * @return This styler instance for chaining.
      *
-     * @see {@link this#dropShadow(BlurType, Color, double, double, double, double)}
+     * @see #dropShadow(BlurType, Color, double, double, double, double)
      */
     public S dropShadow(Color color, double radius, double offsetX, double offsetY) {
         return dropShadow(BlurType.THREE_PASS_BOX, color, radius, 0, offsetX, offsetY);

@@ -48,6 +48,7 @@ public enum UnitValue {
     /** Percentage — relative to the parent value. */
     PERCENT("%"),
 
+    /** None — no unit defined. */
     NONE("");
 
     private final String cssValue;

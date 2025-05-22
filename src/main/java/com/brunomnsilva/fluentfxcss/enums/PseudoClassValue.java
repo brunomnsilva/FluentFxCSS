@@ -6,8 +6,11 @@ package com.brunomnsilva.fluentfxcss.enums;
  * @see <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html#pseudoclasses">JavaFX CSS Pseudo-classes</a>
  */
 public enum PseudoClassValue {
+    /** Hover pseudo-class */
     HOVER(":hover"),
+    /** Focused pseudo-class */
     FOCUSED(":focused"),
+    /** Disabled pseudo-class */
     DISABLED(":disabled");
 
     // TODO: Potentially others if deemed broadly applicable to Node/Region/Shape/Text
