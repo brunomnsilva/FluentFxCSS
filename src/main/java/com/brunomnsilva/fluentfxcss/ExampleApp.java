@@ -11,6 +11,8 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -49,7 +51,9 @@ public class ExampleApp extends Application {
 
         DropShadow shadow = new DropShadow(BlurType.GAUSSIAN, Color.WHITE, 5, 1, 0, 0);
         StyleDefinition textStyle = FluentFxCss.textStyle()
-                .fontFamily("Arial")
+                .fontFamily("JetBrains Mono")
+                .fontWeight(FontWeight.LIGHT)
+                .fontStyle(FontPosture.ITALIC)
                 .fontSize(24)
                 .fill(Color.DARKMAGENTA)
                 .underline(true)
