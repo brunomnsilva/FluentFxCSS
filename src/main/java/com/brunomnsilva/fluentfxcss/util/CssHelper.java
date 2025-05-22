@@ -7,6 +7,7 @@ import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
 import javafx.scene.paint.*;
+import javafx.scene.shape.SVGPath;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.shape.StrokeType;
@@ -174,6 +175,28 @@ public class CssHelper {
 
         sb.append(")");
         return sb.toString();
+    }
+
+    /**
+     * Converts a JavaFX {@link SVGPath} into a CSS-compatible string representation
+     * suitable for use in JavaFX stylesheets.
+     * <p>
+     * In JavaFX CSS, an {@code SVGPath} can be applied using the {@code -fx-shape} property.
+     * This method extracts the SVG path content and wraps it in double quotes, which is
+     * required for the CSS syntax.
+     * <p>
+     * Example output: {@code "M10 10 H 90 V 90 H 10 Z"}
+     *
+     * @param svgPath the {@code SVGPath} instance to convert
+     * @return a valid CSS string representation of the path, or {@code "null"} if {@code svgPath} is {@code null}
+     * @see <a href="https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/shape/SVGPath.html">SVGPath Javadoc</a>
+     */
+    public static String toCssSvgPath(SVGPath svgPath) {
+        if (svgPath == null || svgPath.getContent() == null || svgPath.getContent().isBlank()) {
+            return "null"; // fallback when no path is defined
+        }
+
+        return "\"" + svgPath.getContent().trim() + "\"";
     }
 
     /**

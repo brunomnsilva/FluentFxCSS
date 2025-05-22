@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Paint;
 import javafx.scene.paint.RadialGradient;
+import javafx.scene.shape.SVGPath;
 
 /**
  * An abstract styler for defining CSS properties specific to JavaFX {@link Region} nodes
@@ -397,6 +398,59 @@ public abstract class RegionStyler<S extends RegionStyler<S, D>, D extends Style
         Args.requireNotNull(unit, "unit");
 
         addStyle("-fx-padding", CssHelper.toDoubleArrayString(unit, insets.getTop(), insets.getRight(), insets.getBottom(), insets.getLeft()));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-shape} CSS property, defining an SVG path string that
+     * is used to clip the region's background and border.
+     * <p>
+     * The shape is specified as a string that conforms to the
+     * <a href="http://www.w3.org/TR/SVG/paths.html#PathData">SVG path format</a>.
+     * This allows for creating non-rectangular regions. The coordinates in the SVG path
+     * are relative to the region's top-left corner (0,0).
+     * </p>
+     * <p>
+     * Example of an SVG path for a simple rounded rectangle (though {@code -fx-background-radius}
+     * and {@code -fx-border-radius} are usually preferred for this specific case):
+     * <pre>{@code "M0,10 A10,10 0 0 1 10,0 L90,0 A10,10 0 0 1 100,10 L100,90 A10,10 0 0 1 90,100 L10,100 A10,10 0 0 1 0,90 Z"}</pre>
+     * For a circle with radius 50 at center (50,50) of a 100x100 region:
+     * <pre>{@code "M50,0 A50,50 0 1 1 49.9,0 Z"}</pre> (Approximation due to SVG arc rendering quirks)
+     * Or more simply for a circle shape, if the region's size is known and matches the desired circle diameter:
+     * <pre>{@code "M 0,50 A 50,50 0 1 1 100,50 A 50,50 0 1 1 0,50 Z"} assuming a 100x50 region to make a half circle effect</pre>
+     * A proper circle fitting a 100x100 region would be:
+     * <pre>{@code "M 0,50 C 0,22.38 22.38,0 50,0 C 77.62,0 100,22.38 100,50 C 100,77.62 77.62,100 50,100 C 22.38,100 0,77.62 0,50 Z"}</pre>
+     * </p>
+     * <p>
+     * If the provided SVG path string is null or empty, the {@code -fx-shape} property
+     * will be set to {@code "null"}.
+     * </p>
+     *
+     * @param svgPath The SVG path string defining the shape. Can be null or empty.
+     *                If null or effectively empty, the property will be set to {@code "null"}.
+     * @return This styler instance for chaining.
+     * @see <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html#region">JavaFX CSS Region (-fx-shape)</a>
+     * @see <a href="http://www.w3.org/TR/SVG/paths.html#PathData">SVG PathData Specification</a>
+     */
+    public S shape(String svgPath) {
+        if(svgPath == null || svgPath.trim().isEmpty()) {
+            svgPath = "null";
+        }
+
+        addStyle("-fx-shape", "\"" + svgPath.trim() + "\"");
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-shape} CSS property, defining an SVG path that
+     * is used to clip the region's background and border.
+     *
+     * @param svgPath the {@code SVGPath} instance to use
+     * @return This styler instance for chaining.
+     * @see <a href="https://openjfx.io/javadoc/21/javafx.graphics/javafx/scene/shape/SVGPath.html">SVGPath Javadoc</a>
+     */
+    public S shape(SVGPath svgPath) {
+        addStyle("-fx-shape", CssHelper.toCssSvgPath(svgPath));
         return self();
     }
 
