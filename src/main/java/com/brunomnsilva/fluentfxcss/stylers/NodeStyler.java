@@ -11,6 +11,7 @@ import javafx.scene.effect.InnerShadow;
 import javafx.scene.paint.Color;
 
 import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -93,14 +94,47 @@ public abstract class NodeStyler<S extends NodeStyler<S, D>, D extends StyleDefi
     }
 
     /**
+     * Sets the {@code -fx-rotate} CSS property.
+     * <p>
+     * Specifies the angle of rotation for the node around its layout bounds center
+     * (or a transform origin if specified by {@code -fx-transform-origin}).
+     * The rotation is applied in degrees. Positive values rotate clockwise.
+     * </p>
+     * <p>
+     * Note: The actual pivot point for the rotation can be influenced by other
+     * transform properties or the node's default transform origin.
+     * For simple rotations around the node's center, this property is often sufficient.
+     * For more complex transformations, consider using JavaFX {@link javafx.scene.transform.Rotate}
+     * objects added to the node's transforms list.
+     * </p>
+     *
+     * @param degrees The angle of rotation in degrees.
+     * @return This styler instance for chaining.
+     * @see <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html#typetransform">JavaFX CSS Transforms</a>
+     */
+    public S rotate(double degrees) {
+        // CSS -fx-rotate expects a number (implicitly degrees)
+        addStyle("-fx-rotate", String.format(Locale.US, "%.2f", degrees)); // Format to avoid excessive decimals
+        return self();
+    }
+
+    /**
      * Sets the {@code -fx-effect} CSS property with a drop shadow.
      * Applies a drop shadow effect to the node.
-     * TODO: defaults
+     * <p>
+     *     Other applied defaults:
+     *     <ul>
+     *         <li>{@code blurType = BlurType.THREE_PASS_BOX}</li>
+     *         <li>{@code spread = 0}</li>
+     *     </ul>
+     * </p>
      * @param color   The color of the drop shadow.
-         * @param radius  The radius of the shadow blur.
+     * @param radius  The radius of the shadow blur.
      * @param offsetX The horizontal offset of the shadow.
      * @param offsetY The vertical offset of the shadow.
      * @return This styler instance for chaining.
+     *
+     * @see {@link this#dropShadow(BlurType, Color, double, double, double, double)}
      */
     public S dropShadow(Color color, double radius, double offsetX, double offsetY) {
         return dropShadow(BlurType.THREE_PASS_BOX, color, radius, 0, offsetX, offsetY);
@@ -123,7 +157,8 @@ public abstract class NodeStyler<S extends NodeStyler<S, D>, D extends StyleDefi
      * @param offsetX   The horizontal offset of the shadow from the source.
      * @param offsetY   The vertical offset of the shadow from the source.
      * @return This styler instance for chaining.
-     * @throws NullPointerException if blurType or color is null.
+     *
+     * @throws IllegalArgumentException if blurType or color is null.
      * @throws IllegalArgumentException if radius or spread is outside its valid range.
      */
     public S dropShadow(BlurType blurType, Color color, double radius, double spread,
