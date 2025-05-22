@@ -380,7 +380,7 @@ public class CssHelper {
      * @return the CSS string representation
      */
     public static String toCssStrokeLineCap(StrokeLineCap type) {
-        if (type == null) return "null";
+        if (type == null) return "square";
         return type.name().toLowerCase(Locale.ROOT);
     }
 
@@ -392,7 +392,7 @@ public class CssHelper {
      * @return the CSS string representation
      */
     public static String toCssStrokeLineJoin(StrokeLineJoin type) {
-        if (type == null) return "null";
+        if (type == null) return "miter";
         return type.name().toLowerCase(Locale.ROOT);
     }
 
