@@ -6,8 +6,7 @@ import javafx.scene.Cursor;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
+import javafx.scene.paint.*;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.shape.StrokeType;
@@ -60,13 +59,121 @@ public class CssHelper {
      * @return CSS-compatible string or {@code "transparent"} if null
      */
     public static String toCssPaint(Paint paint) {
-        if(paint == null) return "null";
+        if(paint == null) return "transparent";
 
         if (paint instanceof Color) {
             return toCssColor((Color) paint);
         }
 
-        return paint.toString(); // Fallback
+        if(paint instanceof LinearGradient) {
+            return toCssLinearGradient((LinearGradient) paint);
+        }
+
+        if(paint instanceof RadialGradient) {
+            return toCssRadialGradient((RadialGradient) paint);
+        }
+
+        return paint.toString(); // Fallback, may produce invalid results
+    }
+
+    /**
+     * Converts a {@link javafx.scene.paint.LinearGradient} instance to a valid CSS linear-gradient string.
+     * <p>
+     * The resulting CSS string includes:
+     * <ul>
+     *   <li>Start and end positions in percentage format (e.g., "from 0% 0% to 100% 100%").</li>
+     *   <li>Optional cycle method keyword ("repeat" or "reflect") if applicable.</li>
+     *   <li>Color stops with offset percentages and RGBA hex values.</li>
+     * </ul>
+     * <p>
+     * Example output:
+     * <pre>
+     * linear-gradient(from 0.00% 0.00% to 100.00% 100.00%, #FF0000FF 0.00%, #0000FFFF 100.00%)
+     * </pre>
+     *
+     * @param gradient the {@code LinearGradient} instance to convert; if {@code null}, returns {@code "transparent"}
+     * @return the CSS string representing the linear gradient
+     */
+    public static String toCssLinearGradient(LinearGradient gradient) {
+        if (gradient == null) return "transparent";
+
+        String direction = String.format(Locale.US, "from %.2f%% %.2f%% to %.2f%% %.2f%%",
+                gradient.getStartX() * 100,
+                gradient.getStartY() * 100,
+                gradient.getEndX() * 100,
+                gradient.getEndY() * 100
+        );
+
+        String cycle = "";
+        if (gradient.getCycleMethod() == CycleMethod.REPEAT) {
+            cycle = " repeat";
+        } else if (gradient.getCycleMethod() == CycleMethod.REFLECT) {
+            cycle = " reflect";
+        }
+
+        String stops = gradient.getStops().stream()
+                .map(stop -> String.format(Locale.US, " %s %.2f%%",
+                        CssHelper.toCssColor(stop.getColor()),
+                        stop.getOffset() * 100))
+                .collect(Collectors.joining(","));
+
+        return String.format("linear-gradient(%s%s,%s)", direction, cycle, stops);
+    }
+
+    /**
+     * Converts a {@link javafx.scene.paint.RadialGradient} instance to a valid CSS radial-gradient string.
+     * <p>
+     * The CSS output includes:
+     * <ul>
+     *   <li>Focus angle, focus distance, center position, and radius (all in percentage when applicable).</li>
+     *   <li>Cycle method if set to {@code REFLECT} or {@code REPEAT}.</li>
+     *   <li>Color stops with offset percentages and RGBA hex values.</li>
+     * </ul>
+     * <p>
+     * Example output:
+     * <pre>
+     * radial-gradient(focus-angle 0.0deg, focus-distance 0.5, center 50.0% 50.0%, radius 50.0%, repeat,
+     *     #FF0000FF 0.0%, #0000FFFF 100.0%)
+     * </pre>
+     *
+     * @param gradient the {@code RadialGradient} instance to convert; if {@code null}, returns {@code "transparent"}
+     * @return the CSS string representing the radial gradient
+     */
+    public static String toCssRadialGradient(RadialGradient gradient) {
+        if (gradient == null) return "transparent";
+
+        StringBuilder sb = new StringBuilder("radial-gradient(");
+
+        // Focus angle (in degrees)
+        sb.append(String.format(Locale.US, "focus-angle %.1fdeg, ", gradient.getFocusAngle()));
+
+        // Focus distance
+        sb.append(String.format(Locale.US, "focus-distance %.2f%%, ", gradient.getFocusDistance()));
+
+        // Center
+        sb.append(String.format(Locale.US, "center %.1f%% %.1f%%, ",
+                gradient.getCenterX() * 100, gradient.getCenterY() * 100));
+
+        // Radius
+        sb.append(String.format(Locale.US, "radius %.1f%%", gradient.getRadius() * 100));
+
+        // Cycle method (only if not NO_CYCLE)
+        CycleMethod cycleMethod = gradient.getCycleMethod();
+        if (cycleMethod != CycleMethod.NO_CYCLE) {
+            sb.append(", ").append(cycleMethod.name().toLowerCase(Locale.ROOT));
+        }
+
+        // Stops
+        sb.append(", ");
+        sb.append(
+                gradient.getStops().stream()
+                        .map(stop -> String.format(Locale.US, "%s %.1f%%",
+                                toCssColor(stop.getColor()), stop.getOffset() * 100))
+                        .collect(Collectors.joining(", "))
+        );
+
+        sb.append(")");
+        return sb.toString();
     }
 
     /**

@@ -4,7 +4,10 @@ import com.brunomnsilva.fluentfxcss.definitions.StyleDefinition;
 import com.brunomnsilva.fluentfxcss.enums.UnitValue;
 import com.brunomnsilva.fluentfxcss.util.Args;
 import com.brunomnsilva.fluentfxcss.util.CssHelper;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Paint;
+import javafx.scene.paint.RadialGradient;
 import javafx.scene.shape.Shape;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
@@ -45,10 +48,31 @@ public abstract class ShapeStyler<S extends ShapeStyler<S, D>, D extends StyleDe
     }
 
     /**
-     * Sets the {@code -fx-fill} CSS property, defining the paint used to fill the interior of the shape.
+     * Sets the {@code -fx-fill} CSS property, defining the paint used to fill the interior of the shape or text.
+     * <p>
+     * This method accepts any {@link Paint} object. The underlying {@link CssHelper#toCssPaint(Paint)}
+     * method will attempt to convert it into a valid CSS string representation.
+     * Currently, it supports:
+     * <ul>
+     *     <li>{@link Color}: Converted to a CSS color string (e.g., "#RRGGBBAA", "rgba(...)").</li>
+     *     <li>{@link LinearGradient}: Converted to a CSS {@code linear-gradient(...)} string.</li>
+     *     <li>{@link RadialGradient}: Converted to a CSS {@code radial-gradient(...)} string.</li>
+     * </ul>
+     * If a {@code null} paint is provided, the fill is typically set to "transparent" or the property
+     * might be effectively unset depending on the CSS engine's interpretation of an empty or transparent fill.
+     * For other {@code Paint} subtypes not explicitly handled by {@code CssHelper.toCssPaint} (e.g., {@code ImagePattern}),
+     * the conversion will fall back to {@code paint.toString()}, which may not produce a valid CSS syntax.
+     * </p>
+     * <p>
+     * When used in {@link TextStyler}, this method effectively sets the text color.
+     * </p>
      *
-     * @param paint The {@link Paint} (e.g., {@link javafx.scene.paint.Color}, gradient) for the fill.
+     * @param paint The {@link Paint} to use for the fill (e.g., {@code Color}, {@code LinearGradient},
+     *              {@code RadialGradient}). Can be null.
      * @return This styler instance for chaining.
+     * @see CssHelper#toCssPaint(Paint)
+     * @see <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html#typepaint">JavaFX CSS Paint</a>
+     * @see <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html#shape">JavaFX CSS Shape (-fx-fill)</a>
      */
     public S fill(Paint paint) {
         addStyle("-fx-fill", CssHelper.toCssPaint(paint));

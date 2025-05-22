@@ -8,6 +8,9 @@ import com.brunomnsilva.fluentfxcss.util.CssHelper;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Paint;
+import javafx.scene.paint.RadialGradient;
 
 /**
  * An abstract styler for defining CSS properties specific to JavaFX {@link Region} nodes
@@ -44,13 +47,34 @@ public abstract class RegionStyler<S extends RegionStyler<S, D>, D extends Style
     }
 
     /**
-     * Sets the {@code -fx-background-color} CSS property.
+     * Converts a JavaFX {@link Paint} object to its corresponding CSS string representation.
+     * <p>
+     * This method handles:
+     * <ul>
+     *     <li>{@link Color}: Converts to a CSS color string (e.g., "#RRGGBBAA", "rgba(...)").</li>
+     *     <li>{@link LinearGradient}: Converts to a CSS {@code linear-gradient(...)} string.</li>
+     *     <li>{@link RadialGradient}: Converts to a CSS {@code radial-gradient(...)} string.</li>
+     * </ul>
+     * If the provided {@code paint} is null, it defaults to "transparent".
+     * For other {@code Paint} subtypes not explicitly handled, it falls back to calling
+     * {@code paint.toString()}, which may or may not produce a valid CSS value.
+     * </p>
      *
-     * @param color The background color. If {@code null}, {@code "null"} is used.
-     * @return This styler instance for chaining.
+     * @param paint The {@link Paint} object to convert (e.g., Color, LinearGradient, RadialGradient).
+     *              Can be null.
+     * @return The CSS string representation of the paint (e.g., "#FF0000FF",
+     *         "linear-gradient(from 0.0px 0.0px to 100.0px 0.0px, red 0.0%, blue 100.0%)",
+     *         "transparent"). Returns "transparent" if paint is null.
+     *         The output for unhandled Paint types is {@code paint.toString()}.
+     *
+     * @see CssHelper#toCssPaint(Paint) (Color)
+     * @see CssHelper#toCssLinearGradient(LinearGradient)
+     * @see CssHelper#toCssRadialGradient(RadialGradient)
+     * @see <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html#typecolor">JavaFX CSS Color</a>
+     * @see <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html#region">JavaFX CSS Region (-fx-background-color with gradients)</a>
      */
-    public S backgroundColor(Color color) {
-        addStyle("-fx-background-color", CssHelper.toCssColor(color));
+    public S backgroundColor(Paint paint) {
+        addStyle("-fx-background-color", CssHelper.toCssPaint(paint));
         return self();
     }
 
