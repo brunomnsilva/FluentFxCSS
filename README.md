@@ -99,7 +99,9 @@ The following CSS properties have direct fluent methods in their respective styl
 |                                        | `-fx-strikethrough`       | `.strikethrough(boolean value)`                           |
 |                                        | `-fx-text-alignment`      | `.alignment(TextAlignment alignment)`                     |
 
-**Note:** Many methods have overloads for different numbers of arguments (e.g., padding, border radius/width) and for specifying units with `UnitValue`.
+**Note 1:** Many methods have overloads for different numbers of arguments (e.g., padding, border radius/width) and for specifying units with `UnitValue`.
+
+**Note 2:** `Paint` values include `Color`, `LinearGradient` and `RadialGradient` instances (which are converted to valid CSS syntaxe).
 
 For any other CSS properties not listed above, or for more complex values, you can use the fallback method available on all stylers:
 ```java
