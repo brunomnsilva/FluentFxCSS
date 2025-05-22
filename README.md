@@ -108,7 +108,7 @@ myStyler.customProperty("-fx-your-css-property", "your-css-value");
 
 ## Further Information
 
-For more detailed API documentation, advanced usage examples, and information on building and using `StyleDefinition` objects (including CSS class generation and merging), please refer to the [Project Wiki](link/to/wiki).
+For more detailed API documentation, advanced usage examples, and information on building and using `StyleDefinition` objects (including CSS class generation and merging), please refer to the [Project Wiki](https://github.com/brunomnsilva/FluentFxCSS/wiki).
 
 You cal also refer to the `FluentFxCssDemo` application code.
 
