@@ -4,6 +4,7 @@ import com.brunomnsilva.fluentfxcss.definitions.StyleDefinition;
 import com.brunomnsilva.fluentfxcss.enums.UnitValue;
 import com.brunomnsilva.fluentfxcss.util.Args;
 import com.brunomnsilva.fluentfxcss.util.CssHelper;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Shape;
 import javafx.scene.text.*;
 
@@ -41,6 +42,39 @@ public abstract class TextStyler<S extends TextStyler<S, D>, D extends StyleDefi
      */
     public TextStyler() {
         super();
+    }
+
+    // -- Text Fill (alias)
+    /**
+     * Sets the fill color or paint for the text, effectively an alias for {@link #fill(Paint)}.
+     * <p>
+     * The JavaFX CSS property for text color is {@code -fx-fill}. This method provides
+     * a semantically clearer way to set the text's appearance when compared to using
+     * the generic {@code fill()} method inherited from {@link ShapeStyler}.
+     * </p>
+     * <p>
+     * This method accepts any {@link Paint} object. The underlying {@link com.brunomnsilva.fluentfxcss.util.CssHelper#toCssPaint(Paint)}
+     * method will attempt to convert it into a valid CSS string representation.
+     * Supported {@code Paint} types include:
+     * <ul>
+     *     <li>{@link javafx.scene.paint.Color}: Converted to a CSS color string.</li>
+     *     <li>{@link javafx.scene.paint.LinearGradient}: Converted to a CSS {@code linear-gradient(...)} string.</li>
+     *     <li>{@link javafx.scene.paint.RadialGradient}: Converted to a CSS {@code radial-gradient(...)} string.</li>
+     * </ul>
+     * If a {@code null} paint is provided, the fill is set to "transparent".
+     * </p>
+     *
+     * @param paint The {@link Paint} to use for the text's fill (e.g., {@code Color},
+     *              {@code LinearGradient}, {@code RadialGradient}). Can be null.
+     * @return This styler instance for chaining.
+     * @see #fill(Paint)
+     * @see com.brunomnsilva.fluentfxcss.util.CssHelper#toCssPaint(Paint)
+     * @see <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html#text">JavaFX CSS Text (-fx-fill)</a>
+     */
+    public S textFill(Paint paint) {
+        // Delegates to the fill method inherited from ShapeStyler,
+        // which sets the -fx-fill CSS property.
+        return fill(paint);
     }
 
     // --- Font Properties ---
