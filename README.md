@@ -16,20 +16,24 @@ FluentFxCSS provides a fluent, type-safe builder API to programmatically constru
 
 ## Installation
 
+:warning: Requires JDK 11, or above.
+
+Example for Maven and Gradle, where `x.y.z` is the library version, e.g., `1.0.0`:
+
 **Maven Example:**
 
 ```xml
 <dependency>
     <groupId>com.brunomnsilva</groupId>
     <artifactId>fluentfxcss</artifactId>
-    <version>1.0.0</version>
+    <version>x.y.z</version>
 </dependency>
 ```
 
 **Gradle Example:**
 
 ```gradle
-implementation 'com.brunomnsilva:fluentfxcss:1.0.0'
+implementation 'com.brunomnsilva:fluentfxcss:x.y.z'
 ```
 
 ## Quick Start
@@ -105,6 +109,8 @@ myStyler.customProperty("-fx-your-css-property", "your-css-value");
 ## Further Information
 
 For more detailed API documentation, advanced usage examples, and information on building and using `StyleDefinition` objects (including CSS class generation and merging), please refer to the [Project Wiki](link/to/wiki).
+
+You cal also refer to the `FluentFxCssDemo` application code.
 
 ## Contributing
 
