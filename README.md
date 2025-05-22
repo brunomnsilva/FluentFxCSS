@@ -72,8 +72,6 @@ The following CSS properties have direct fluent methods in their respective styl
 |                                        | `-fx-border-width`        | `.borderWidth(double width)` / `..(UnitValue, ...)`       |
 |                                        | `-fx-border-radius`       | `.borderRadius(double radius)` / `..(UnitValue, ...)`     |
 |                                        | `-fx-shape`               | `.shape(String svgPath)`                                  |
-|                                        | `-fx-pref-width`          | `.prefWidth(double value)` / `..(UnitValue, ...)`         |
-|                                        | `-fx-pref-height`         | `.prefHeight(double value)` / `..(UnitValue, ...)`        |
 | **ShapeStyler**   |                          |                                                           |
 |                                        | `-fx-fill`                | `.fill(Paint paint)`                                      |
 |                                        | `-fx-stroke`              | `.stroke(Paint paint)`                                    |
