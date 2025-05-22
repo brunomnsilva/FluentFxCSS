@@ -22,7 +22,7 @@ import java.util.Map;
  * convenience methods if relevant CSS properties or styling paradigms emerge.
  *
  * @see RegionStyleDefinition
- * @see BaseStyleDefinition
+ * @see NodeStyleDefinition
  * @see StyleDefinition
  * @see FluentPaneStyler
  * @see javafx.scene.layout.Pane

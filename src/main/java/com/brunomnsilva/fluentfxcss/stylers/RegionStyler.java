@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
  * An abstract styler for defining CSS properties specific to JavaFX {@link Region} nodes
  * and their descendants (e.g., {@link javafx.scene.layout.Pane}, {@link javafx.scene.control.Control}).
  * <p>
- * This class extends {@link BaseStyler} and adds fluent methods for common
+ * This class extends {@link NodeStyler} and adds fluent methods for common
  * region-related styles such as background, border, and padding.
  * Subclasses, like concrete stylers for specific Region types (e.g., {@code FluentPaneStyler}),
  * will extend this class.
@@ -26,18 +26,18 @@ import javafx.scene.paint.Color;
  *
  * @param <S> The concrete type of the styler extending this class (CRTP).
  * @param <D> The specific type of {@link StyleDefinition} this styler builds.
- * @see BaseStyler
+ * @see NodeStyler
  * @see StyleDefinition
  * @see javafx.scene.layout.Region
  *
  * @author brunomnsilva
  */
 public abstract class RegionStyler<S extends RegionStyler<S, D>, D extends StyleDefinition>
-        extends BaseStyler<S, D> {
+        extends NodeStyler<S, D> {
 
     /**
      * Protected constructor for subclasses.
-     * Initializes the styler which is a descendant of {@link BaseStyler}.
+     * Initializes the styler which is a descendant of {@link NodeStyler}.
      */
     protected RegionStyler() {
         super();

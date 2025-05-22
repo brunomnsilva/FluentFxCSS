@@ -46,12 +46,12 @@ import java.util.Map;
  *
  * @author brunomnsilva
  */
-public abstract class BaseStyler<S extends BaseStyler<S, D>, D extends StyleDefinition> {
+public abstract class NodeStyler<S extends NodeStyler<S, D>, D extends StyleDefinition> {
 
     /** property:value mappings */
     protected final Map<String, String> styles = new LinkedHashMap<>();
 
-    protected BaseStyler() {
+    protected NodeStyler() {
     }
 
     /**

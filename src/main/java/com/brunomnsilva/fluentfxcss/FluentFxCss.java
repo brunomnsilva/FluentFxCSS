@@ -1,9 +1,7 @@
 package com.brunomnsilva.fluentfxcss;
 
-import com.brunomnsilva.fluentfxcss.stylers.concrete.FluentPaneStyler;
-import com.brunomnsilva.fluentfxcss.stylers.concrete.FluentRegionStyler;
-import com.brunomnsilva.fluentfxcss.stylers.concrete.FluentShapeStyler;
-import com.brunomnsilva.fluentfxcss.stylers.concrete.FluentTextStyler;
+import com.brunomnsilva.fluentfxcss.stylers.NodeStyler;
+import com.brunomnsilva.fluentfxcss.stylers.concrete.*;
 
 /**
  * Entry point for the FluentFxCss library, providing static factory methods
@@ -34,7 +32,7 @@ import com.brunomnsilva.fluentfxcss.stylers.concrete.FluentTextStyler;
  * }</pre>
  * This class is final and cannot be instantiated.
  *
- * @see com.brunomnsilva.fluentfxcss.stylers.BaseStyler
+ * @see NodeStyler
  * @see com.brunomnsilva.fluentfxcss.definitions.StyleDefinition
  *
  * @author brunomnsilva
@@ -43,6 +41,15 @@ public final class FluentFxCss {
 
     private FluentFxCss() {
         // Utility class, no instantiation.
+    }
+
+    /**
+     * Creates a new styler for general {@link javafx.scene.Node} nodes.
+     *
+     * @return A new {@link FluentNodeStyler} instance.
+     */
+    public static FluentNodeStyler nodeStyle() {
+        return new FluentNodeStyler();
     }
 
     /**
@@ -82,17 +89,4 @@ public final class FluentFxCss {
     public static FluentTextStyler textStyle() {
         return new FluentTextStyler();
     }
-
-    // Optional: If you have a styler for generic javafx.scene.Node
-    /*
-    /**
-     * Creates a new styler for generic {@link javafx.scene.Node} instances,
-     * applying only the most basic styles common to all nodes.
-     *
-     * @return A new {@code FluentNodeStyler} instance.
-     */
-    // public static FluentNodeStyler nodeStyle() {
-    //     return new FluentNodeStyler();
-    // }
-    //*/
 }

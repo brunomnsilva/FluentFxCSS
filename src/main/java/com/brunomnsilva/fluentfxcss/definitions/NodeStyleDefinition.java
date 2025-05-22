@@ -1,5 +1,6 @@
 package com.brunomnsilva.fluentfxcss.definitions;
 
+import com.brunomnsilva.fluentfxcss.stylers.NodeStyler;
 import com.brunomnsilva.fluentfxcss.util.Args;
 import javafx.scene.Node;
 import java.util.Collections;
@@ -15,23 +16,23 @@ import java.util.stream.Collectors;
  * </p>
  * <p>
  * Instances of this class (or its subclasses) are typically created by the
- * {@code build()} method of styler builders (e.g., from {@link com.brunomnsilva.fluentfxcss.stylers.BaseStyler}).
+ * {@code build()} method of styler builders (e.g., from {@link NodeStyler}).
  * The map of styles provided during construction is treated as immutable or copied to ensure
- * the {@code BaseStyleDefinition} itself remains effectively immutable after creation.
+ * the {@code NodeStyleDefinition} itself remains effectively immutable after creation.
  * </p>
  * This class is intended to be extended by more specific style definition types
  * (e.g., {@code RegionStyleDefinition}, {@code TextStyleDefinition}) if specialized behavior
  * or typing is required for those definitions, though it can also be used directly.
  *
  * @see StyleDefinition
- * @see com.brunomnsilva.fluentfxcss.stylers.BaseStyler
+ * @see NodeStyler
  *
  * @author brunomnsilva
  */
-public class BaseStyleDefinition implements StyleDefinition {
+public class NodeStyleDefinition implements StyleDefinition {
     protected final Map<String, String> styles; // Should be immutable or a copy
 
-    public BaseStyleDefinition(Map<String, String> styles) {
+    public NodeStyleDefinition(Map<String, String> styles) {
         // Ensure immutability
         this.styles = Collections.unmodifiableMap(styles);
     }
@@ -117,7 +118,7 @@ public class BaseStyleDefinition implements StyleDefinition {
     public StyleDefinition mergeWith(StyleDefinition other) {
         Map<String, String> mergedStyles = new java.util.LinkedHashMap<>(this.styles);
         mergedStyles.putAll(other.getStylesMap());
-        return new BaseStyleDefinition(mergedStyles);
+        return new NodeStyleDefinition(mergedStyles);
     }
 
     @Override

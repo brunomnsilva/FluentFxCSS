@@ -25,7 +25,7 @@ import javafx.scene.text.*;
  * @param <S> The concrete type of the styler extending this class (CRTP).
  * @param <D> The specific type of {@link StyleDefinition} this styler builds.
  * @see ShapeStyler
- * @see BaseStyler
+ * @see NodeStyler
  * @see StyleDefinition
  * @see javafx.scene.text.Text
  * @see javafx.scene.shape.Shape

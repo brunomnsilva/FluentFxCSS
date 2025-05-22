@@ -14,7 +14,7 @@ import javafx.scene.shape.StrokeType;
  * An abstract styler for defining CSS properties specific to JavaFX {@link Shape} nodes
  * (e.g., {@link javafx.scene.shape.Rectangle}, {@link javafx.scene.shape.Circle}, {@link javafx.scene.shape.Path}).
  * <p>
- * This class extends {@link BaseStyler} and adds fluent methods for common
+ * This class extends {@link NodeStyler} and adds fluent methods for common
  * shape-related styles such as fill, stroke appearance (color, width, type, dashing),
  * and smoothing. Subclasses, like concrete stylers for specific Shape types or a general
  * {@code FluentShapeStyler}, will extend this class.
@@ -27,18 +27,18 @@ import javafx.scene.shape.StrokeType;
  *
  * @param <S> The concrete type of the styler extending this class (CRTP).
  * @param <D> The specific type of {@link StyleDefinition} this styler builds.
- * @see BaseStyler
+ * @see NodeStyler
  * @see StyleDefinition
  * @see javafx.scene.shape.Shape
  *
  * @author brunomnsilva
  */
 public abstract class ShapeStyler<S extends ShapeStyler<S, D>, D extends StyleDefinition>
-        extends BaseStyler<S, D> { // Corrected: Should extend BaseStyler, not RegionStyler
+        extends NodeStyler<S, D> { // Corrected: Should extend NodeStyler, not RegionStyler
 
     /**
      * Protected constructor for subclasses.
-     * Initializes the styler which is a descendant of {@link BaseStyler}.
+     * Initializes the styler which is a descendant of {@link NodeStyler}.
      */
     public ShapeStyler() {
         super();

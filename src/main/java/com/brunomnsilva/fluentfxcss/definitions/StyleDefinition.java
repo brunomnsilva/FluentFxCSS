@@ -1,5 +1,6 @@
 package com.brunomnsilva.fluentfxcss.definitions;
 
+import com.brunomnsilva.fluentfxcss.stylers.NodeStyler;
 import javafx.scene.Node;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ import java.util.Map;
  * Implementations are expected to be immutable or effectively immutable after creation.
  *
  * @see com.brunomnsilva.fluentfxcss.FluentFxCss
- * @see com.brunomnsilva.fluentfxcss.stylers.BaseStyler#build()
+ * @see NodeStyler#build()
  *
  * @author brunomnsilva
  */
