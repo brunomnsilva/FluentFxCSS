@@ -110,7 +110,6 @@ Adds properties specific to `javafx.scene.layout.Region` nodes. Includes all `No
   <summary><strong>ShapeStyler</strong> (Extends NodeStyler - click to expand)</summary>
 
 Adds properties specific to `javafx.scene.shape.Shape` nodes. Includes all `NodeStyler` properties.
-*(Note: ShapeStyler should extend NodeStyler, not RegionStyler).*
 
 | CSS Property              | Example Fluent Method(s)                                  |
   |---------------------------|-----------------------------------------------------------|

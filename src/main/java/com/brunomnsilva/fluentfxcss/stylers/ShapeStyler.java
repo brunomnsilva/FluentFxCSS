@@ -37,7 +37,7 @@ import javafx.scene.shape.StrokeType;
  * @author brunomnsilva
  */
 public abstract class ShapeStyler<S extends ShapeStyler<S, D>, D extends StyleDefinition>
-        extends NodeStyler<S, D> { // Corrected: Should extend NodeStyler, not RegionStyler
+        extends NodeStyler<S, D> {
 
     /**
      * Protected constructor for subclasses.
