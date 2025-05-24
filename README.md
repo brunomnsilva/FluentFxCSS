@@ -98,13 +98,13 @@ Adds properties specific to `javafx.scene.layout.Region` nodes. Includes all `No
 | `-fx-shape`             | `.shape(String svgPath)`                                  |
 | `-fx-position-shape`    | `.positionShape(boolean centerPositioned)`                |
 | `-fx-scale-shape`       | `.scaleShape(boolean scaleToFit)`                         |
+| `-fx-background-insets`   | `.backgroundInsets(Insets insets)` / `..(values)`           |
 
 <!--
 | `-fx-background-image`    | `.backgroundImage(String url)`                              |
 | `-fx-background-repeat`   | `.backgroundRepeat(BackgroundRepeat x, BackgroundRepeat y)` |
 | `-fx-background-position` | `.backgroundPosition(...)` (simplified or string)           |
 | `-fx-background-size`     | `.backgroundSize(BackgroundSize size)` / `..(String)`       |
-| `-fx-background-insets`   | `.backgroundInsets(Insets insets)` / `..(values)`           |
 -->
 
 </details>
