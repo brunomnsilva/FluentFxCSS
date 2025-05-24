@@ -73,12 +73,9 @@ Properties common to all JavaFX Nodes. These methods are available on all more s
 | `-fx-cursor`              | `.cursor(Cursor cursor)`                                               |
 | `-fx-visible`             | `.visible(boolean value)`                                              |
 | `-fx-rotate`              | `.rotate(double degrees)`                                              |
-
-<!--
 | `-fx-scale-x` / `-fx-scale-y` | `.scaleX(double)`, `.scaleY(double)`, `.scale(double factorXY)`        |
 | `-fx-translate-x` / `-fx-translate-y` | `.translateX(double)`, `.translateY(double)`, `.translate(double dXY)` |
 | `-fx-blend-mode`          | `.blendMode(BlendMode mode)`                                           |
--->
 
 </details>
 
