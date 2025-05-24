@@ -63,6 +63,8 @@ The following CSS properties have direct fluent methods in their respective styl
 
 Properties common to all JavaFX Nodes. These methods are available on all more specific stylers through inheritance.
 
+🗏 [JavaFX CSS Reference](https://openjfx.io/javadoc/11/javafx.graphics/javafx/scene/doc-files/cssref.html#node)
+
 | CSS Property              | Example Fluent Method(s)                                  |
   |---------------------------|-----------------------------------------------------------|
 | `-fx-opacity`             | `.opacity(double value)`                                  |
@@ -83,6 +85,8 @@ Properties common to all JavaFX Nodes. These methods are available on all more s
   <summary><strong>RegionStyler</strong> (Extends NodeStyler - click to expand)</summary>
 
 Adds properties specific to `javafx.scene.layout.Region` nodes. Includes all `NodeStyler` properties.
+
+🗏 [JavaFX CSS Reference](https://openjfx.io/javadoc/11/javafx.graphics/javafx/scene/doc-files/cssref.html#region)
 
 | CSS Property              | Example Fluent Method(s)                                  |
   |---------------------------|-----------------------------------------------------------|
@@ -111,6 +115,8 @@ Adds properties specific to `javafx.scene.layout.Region` nodes. Includes all `No
 
 Adds properties specific to `javafx.scene.shape.Shape` nodes. Includes all `NodeStyler` properties.
 
+🗏 [JavaFX CSS Reference](https://openjfx.io/javadoc/11/javafx.graphics/javafx/scene/doc-files/cssref.html#shape)
+
 | CSS Property              | Example Fluent Method(s)                                  |
   |---------------------------|-----------------------------------------------------------|
 | `-fx-fill`                | `.fill(Paint paint)`                                      |
@@ -130,6 +136,8 @@ Adds properties specific to `javafx.scene.shape.Shape` nodes. Includes all `Node
   <summary><strong>TextStyler</strong> (Extends ShapeStyler - click to expand)</summary>
 
 Adds properties specific to `javafx.scene.text.Text` nodes. Includes all `ShapeStyler` (and thus `NodeStyler`) properties.
+
+🗏 [JavaFX CSS Reference](https://openjfx.io/javadoc/11/javafx.graphics/javafx/scene/doc-files/cssref.html#text)
 
 | CSS Property              | Example Fluent Method(s)                                  |
   |---------------------------|-----------------------------------------------------------|
