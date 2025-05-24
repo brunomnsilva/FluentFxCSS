@@ -65,19 +65,20 @@ Properties common to all JavaFX Nodes. These methods are available on all more s
 
 🗏 [JavaFX CSS Reference](https://openjfx.io/javadoc/11/javafx.graphics/javafx/scene/doc-files/cssref.html#node)
 
-| CSS Property              | Example Fluent Method(s)                                  |
-  |---------------------------|-----------------------------------------------------------|
-| `-fx-opacity`             | `.opacity(double value)`                                  |
-| `-fx-effect` (DropShadow) | `.dropShadow(BlurType, Color, radius, spread, offX, offY)` |
-| `-fx-effect` (InnerShadow)| `.innerShadow(BlurType, Color, radius, choke, offX, offY)`|
-| `-fx-cursor`              | `.cursor(Cursor cursor)`                                  |
-| `-fx-visible`             | `.visible(boolean value)`                                 |
-| `-fx-rotate`              | `.rotate(double degrees)`                                 |
-| `-fx-scale-x` / `-fx-scale-y` | `.scaleX(double)`, `.scaleY(double)`, `.scale(double factorXY)` |
+| CSS Property              | Fluent Methods 🥈                                                        |
+|---------------------------|------------------------------------------------------------------------|
+| `-fx-opacity`             | `.opacity(double value)`                                               |
+| `-fx-effect` (DropShadow) | `.dropShadow(BlurType, Color, radius, spread, offX, offY)`             |
+| `-fx-effect` (InnerShadow)| `.innerShadow(BlurType, Color, radius, choke, offX, offY)`             |
+| `-fx-cursor`              | `.cursor(Cursor cursor)`                                               |
+| `-fx-visible`             | `.visible(boolean value)`                                              |
+| `-fx-rotate`              | `.rotate(double degrees)`                                              |
+
+<!--
+| `-fx-scale-x` / `-fx-scale-y` | `.scaleX(double)`, `.scaleY(double)`, `.scale(double factorXY)`        |
 | `-fx-translate-x` / `-fx-translate-y` | `.translateX(double)`, `.translateY(double)`, `.translate(double dXY)` |
-| `-fx-blend-mode`          | `.blendMode(BlendMode mode)`                              |
-| `-fx-node-orientation`    | `.nodeOrientation(NodeOrientation orientation)`           |
-  <!-- Add other NodeStyler properties here if you add them, e.g., ColorAdjust, GaussianBlur -->
+| `-fx-blend-mode`          | `.blendMode(BlendMode mode)`                                           |
+-->
 
 </details>
 
@@ -88,25 +89,24 @@ Adds properties specific to `javafx.scene.layout.Region` nodes. Includes all `No
 
 🗏 [JavaFX CSS Reference](https://openjfx.io/javadoc/11/javafx.graphics/javafx/scene/doc-files/cssref.html#region)
 
-| CSS Property              | Example Fluent Method(s)                                  |
-  |---------------------------|-----------------------------------------------------------|
-| `-fx-background-color`    | `.backgroundColor(Paint paint)`                           |
-| `-fx-background-radius`   | `.backgroundRadius(double radius)` / `..(UnitValue, ...)` |
-| `-fx-padding`             | `.padding(double allSides)` / `..(UnitValue, ...)`        |
-| `-fx-border-color`        | `.borderColor(Color color)` / `..(colors...)`             |
-| `-fx-border-style`        | `.borderStyle(BorderStyleValue style)` / `..(styles...)`   |
-| `-fx-border-width`        | `.borderWidth(double width)` / `..(UnitValue, ...)`       |
-| `-fx-border-radius`       | `.borderRadius(double radius)` / `..(UnitValue, ...)`     |
-| `-fx-shape`               | `.shape(String svgPath)`                                  |
-| `-fx-pref-width`          | `.prefWidth(double value)` / `..(UnitValue, ...)`         |
-| `-fx-pref-height`         | `.prefHeight(double value)` / `..(UnitValue, ...)`        |
-| `-fx-min-width` / `-fx-max-width` | `.minWidth(...)`, `.maxWidth(...)`                   |
-| `-fx-min-height` / `-fx-max-height` | `.minHeight(...)`, `.maxHeight(...)`                 |
-| `-fx-background-image`    | `.backgroundImage(String url)`                            |
-| `-fx-background-repeat`   | `.backgroundRepeat(BackgroundRepeat x, BackgroundRepeat y)`|
-| `-fx-background-position` | `.backgroundPosition(...)` (simplified or string)         |
-| `-fx-background-size`     | `.backgroundSize(BackgroundSize size)` / `..(String)`     |
-| `-fx-background-insets`   | `.backgroundInsets(Insets insets)` / `..(values)`         |
+| CSS Property              | Fluent Methods 🥉                                             |
+|---------------------------|-------------------------------------------------------------|
+| `-fx-background-color`    | `.backgroundColor(Paint paint)`                             |
+| `-fx-background-radius`   | `.backgroundRadius(double radius)` / `..(UnitValue, ...)`   |
+| `-fx-padding`             | `.padding(double allSides)` / `..(UnitValue, ...)`          |
+| `-fx-border-color`        | `.borderColor(Color color)` / `..(colors...)`               |
+| `-fx-border-style`        | `.borderStyle(BorderStyleValue style)` / `..(styles...)`    |
+| `-fx-border-width`        | `.borderWidth(double width)` / `..(UnitValue, ...)`         |
+| `-fx-border-radius`       | `.borderRadius(double radius)` / `..(UnitValue, ...)`       |
+| `-fx-shape`               | `.shape(String svgPath)`                                    |
+
+<!--
+| `-fx-background-image`    | `.backgroundImage(String url)`                              |
+| `-fx-background-repeat`   | `.backgroundRepeat(BackgroundRepeat x, BackgroundRepeat y)` |
+| `-fx-background-position` | `.backgroundPosition(...)` (simplified or string)           |
+| `-fx-background-size`     | `.backgroundSize(BackgroundSize size)` / `..(String)`       |
+| `-fx-background-insets`   | `.backgroundInsets(Insets insets)` / `..(values)`           |
+-->
 
 </details>
 
@@ -117,18 +117,18 @@ Adds properties specific to `javafx.scene.shape.Shape` nodes. Includes all `Node
 
 🗏 [JavaFX CSS Reference](https://openjfx.io/javadoc/11/javafx.graphics/javafx/scene/doc-files/cssref.html#shape)
 
-| CSS Property              | Example Fluent Method(s)                                  |
-  |---------------------------|-----------------------------------------------------------|
-| `-fx-fill`                | `.fill(Paint paint)`                                      |
-| `-fx-stroke`              | `.stroke(Paint paint)`                                    |
-| `-fx-stroke-width`        | `.strokeWidth(double value)` / `..(UnitValue, ...)`       |
-| `-fx-stroke-type`         | `.strokeType(StrokeType type)`                            |
-| `-fx-stroke-dash-array`   | `.strokeDashArray(Integer... size)`                       |
-| `-fx-stroke-dash-offset`  | `.strokeDashOffset(double value)`                         |
-| `-fx-stroke-line-cap`     | `.strokeLineCap(StrokeLineCap cap)`                       |
-| `-fx-stroke-line-join`    | `.strokeLineJoin(StrokeLineJoin join)`                    |
-| `-fx-stroke-miter-limit`  | `.strokeMiterLimit(double value)`                         |
-| `-fx-smooth`              | `.smooth(boolean value)`                                  |
+| CSS Property              | Fluent Methods 🥇                                     |
+|-----------------------------------------------------|-----------------------------------------------------------|
+| `-fx-fill`                | `.fill(Paint paint)`                                |
+| `-fx-stroke`              | `.stroke(Paint paint)`                              |
+| `-fx-stroke-width`        | `.strokeWidth(double value)` / `..(UnitValue, ...)` |
+| `-fx-stroke-type`         | `.strokeType(StrokeType type)`                      |
+| `-fx-stroke-dash-array`   | `.strokeDashArray(Integer... size)`                 |
+| `-fx-stroke-dash-offset`  | `.strokeDashOffset(double value)`                   |
+| `-fx-stroke-line-cap`     | `.strokeLineCap(StrokeLineCap cap)`                 |
+| `-fx-stroke-line-join`    | `.strokeLineJoin(StrokeLineJoin join)`              |
+| `-fx-stroke-miter-limit`  | `.strokeMiterLimit(double value)`                   |
+| `-fx-smooth`              | `.smooth(boolean value)`                            |
 
 </details>
 
@@ -139,19 +139,19 @@ Adds properties specific to `javafx.scene.text.Text` nodes. Includes all `ShapeS
 
 🗏 [JavaFX CSS Reference](https://openjfx.io/javadoc/11/javafx.graphics/javafx/scene/doc-files/cssref.html#text)
 
-| CSS Property              | Example Fluent Method(s)                                  |
-  |---------------------------|-----------------------------------------------------------|
-| `-fx-font-family`         | `.fontFamily(String family)`                              |
-| `-fx-font-size`           | `.fontSize(double size)` (defaults to PT)                 |
-| `-fx-font-weight`         | `.fontWeight(FontWeight weight)`                          |
-| `-fx-font-style`          | `.fontStyle(FontPosture posture)`                         |
-| `-fx-font` (shorthand)    | `.font(Font font)`                                        |
-| `-fx-fill` (via Shape)    | `.fill(Paint paint)` or `.textFill(Paint paint)` (alias)  |
-| `-fx-font-smoothing-type` | `.smoothing(FontSmoothingType type)`                      |
-| `-fx-underline`           | `.underline(boolean value)`                               |
-| `-fx-strikethrough`       | `.strikethrough(boolean value)`                           |
-| `-fx-text-alignment`      | `.alignment(TextAlignment alignment)`                     |
-| `-fx-line-spacing`        | `.lineSpacing(double spacing)`                            |
+| CSS Property              | Fluent Methods 🥇                                          |
+|---------------------------|----------------------------------------------------------|
+| `-fx-font-family`         | `.fontFamily(String family)`                             |
+| `-fx-font-size`           | `.fontSize(double size)` (defaults to PT)                |
+| `-fx-font-weight`         | `.fontWeight(FontWeight weight)`                         |
+| `-fx-font-style`          | `.fontStyle(FontPosture posture)`                        |
+| `-fx-font` (shorthand)    | `.font(Font font)`                                       |
+| `-fx-fill` (via Shape)    | `.fill(Paint paint)` or `.textFill(Paint paint)` (alias) |
+| `-fx-font-smoothing-type` | `.smoothing(FontSmoothingType type)`                     |
+| `-fx-underline`           | `.underline(boolean value)`                              |
+| `-fx-strikethrough`       | `.strikethrough(boolean value)`                          |
+| `-fx-text-alignment`      | `.alignment(TextAlignment alignment)`                    |
+| `-fx-text-origin`         | `.origin(TextOriginValue origin)`                        |
 
 </details>
 

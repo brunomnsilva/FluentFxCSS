@@ -1,6 +1,7 @@
 package com.brunomnsilva.fluentfxcss.stylers;
 
 import com.brunomnsilva.fluentfxcss.definitions.StyleDefinition;
+import com.brunomnsilva.fluentfxcss.enums.TextOriginValue;
 import com.brunomnsilva.fluentfxcss.enums.UnitValue;
 import com.brunomnsilva.fluentfxcss.util.Args;
 import com.brunomnsilva.fluentfxcss.util.CssHelper;
@@ -229,10 +230,24 @@ public abstract class TextStyler<S extends TextStyler<S, D>, D extends StyleDefi
         return self();
     }
 
-    // TODO: Consider adding textFill() as an alias for fill() inherited from ShapeStyler for clarity:
-    /*
-    public S textFill(Paint paint) {
-        return fill(paint); // Delegates to ShapeStyler's fill method
+    /**
+     * Sets the {@code -fx-text-origin} CSS property, which determines the vertical
+     * origin of the text when it is positioned using its y coordinate.
+     * <p>
+     * For example, if the origin is {@link TextOriginValue#BASELINE}, the y coordinate
+     * of the Text node specifies the position of the text's baseline. If it is
+     * {@link TextOriginValue#TOP}, the y coordinate specifies the top of the text.
+     * </p>
+     *
+     * @param origin The desired text origin (e.g., {@link TextOriginValue#BASELINE},
+     *               {@link TextOriginValue#TOP}, {@link TextOriginValue#BOTTOM}).
+     *               Must not be null.
+     * @return This styler instance for chaining.
+     * @throws IllegalArgumentException if origin is null.
+     */
+    public S origin(TextOriginValue origin) {
+        Args.requireNotNull(origin, "origin");
+        addStyle("-fx-text-origin", CssHelper.toCssTextOrigin(origin));
+        return self();
     }
-    */
 }

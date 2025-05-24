@@ -1,7 +1,9 @@
 package com.brunomnsilva.fluentfxcss.util;
 
 import com.brunomnsilva.fluentfxcss.enums.BorderStyleValue;
+import com.brunomnsilva.fluentfxcss.enums.TextOriginValue;
 import com.brunomnsilva.fluentfxcss.enums.UnitValue;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
@@ -358,6 +360,26 @@ public class CssHelper {
     public static String toCssFontSmoothingType(FontSmoothingType type) {
         if(type == null) return "gray";
         return type.name().toLowerCase(Locale.ROOT);
+    }
+
+    /**
+     * Converts a {@link TextOriginValue} enum to its corresponding CSS string representation
+     * for the {@code -fx-text-origin} property.
+     * <p>
+     * If the provided {@code origin} is {@code null}, this method defaults to returning
+     * {@code "baseline"}, as "baseline" is the default value for {@code -fx-text-origin}
+     * in JavaFX CSS.
+     * </p>
+     *
+     * @param origin The {@link TextOriginValue} enum instance (e.g., {@code TextOriginValue.TOP},
+     *               {@code TextOriginValue.BASELINE}). Can be null.
+     * @return The CSS string for the text origin (e.g., "top", "baseline", "bottom").
+     *         Returns "baseline" if the input {@code origin} is null.
+     * @see com.brunomnsilva.fluentfxcss.enums.TextOriginValue
+     */
+    public static String toCssTextOrigin(TextOriginValue origin) {
+        if(origin == null) return "baseline";
+        return origin.getCssValue();
     }
 
     /**
