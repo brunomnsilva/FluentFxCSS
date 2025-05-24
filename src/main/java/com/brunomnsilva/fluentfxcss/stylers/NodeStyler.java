@@ -84,15 +84,29 @@ public abstract class NodeStyler<S extends NodeStyler<S, D>, D extends StyleDefi
     }
 
     /**
-     * Sets the {@code -fx-scale-z} CSS property.
-     * Controls the scale of the node on the z-axis.
-     * (Note: -fx-scale-z might primarily affect 3D nodes, but it's a standard Node property).
+     * Sets the {@code -fx-scale-x} and {@code -fx-scale-y} CSS properties to the same value,
+     * scaling the node uniformly in X and Y dimensions.
      *
-     * @param value The scale factor for the z-axis.
+     * @param value The scale factor for both x and y-axis.
      * @return This styler instance for chaining.
      */
-    public S scaleZ(double value) {
-        addStyle("-fx-scale-z", String.format(Locale.US, "%.2f", value));
+    public S scaleXY(double value) {
+        addStyle("-fx-scale-x", String.format(Locale.US, "%.2f", value));
+        addStyle("-fx-scale-y", String.format(Locale.US, "%.2f", value));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-scale-x} and {@code -fx-scale-y} CSS properties,
+     * scaling the node in X and Y dimensions respectively.
+     *
+     * @param scaleX The scale factor for the x-axis.
+     * @param scaleY The scale factor for the y-axis.
+     * @return This styler instance for chaining.
+     */
+    public S scaleXY(double scaleX, double scaleY) {
+        addStyle("-fx-scale-x", String.format(Locale.US, "%.2f", scaleX));
+        addStyle("-fx-scale-y", String.format(Locale.US, "%.2f", scaleY));
         return self();
     }
 
@@ -121,14 +135,29 @@ public abstract class NodeStyler<S extends NodeStyler<S, D>, D extends StyleDefi
     }
 
     /**
-     * Sets the {@code -fx-translate-z} CSS property.
-     * Controls the translation of the node on the z-axis.
+     * Sets the {@code -fx-translate-x} and {@code -fx-translate-y} CSS properties to the same value,
+     * translating the node uniformly in X and Y dimensions.
      *
-     * @param value The translation distance for the z-axis.
+     * @param value The translation distance for both x and y-axis.
      * @return This styler instance for chaining.
      */
-    public S translateZ(double value) {
-        addStyle("-fx-translate-z", String.format(Locale.US, "%.2f", value));
+    public S translateXY(double value) {
+        addStyle("-fx-translate-x", String.format(Locale.US, "%.2f", value));
+        addStyle("-fx-translate-y", String.format(Locale.US, "%.2f", value));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-translate-x} and {@code -fx-translate-y} CSS properties,
+     * translating the node in X and Y dimensions respectively.
+     *
+     * @param translateX The translation distance for the x-axis.
+     * @param translateY The translation distance for the y-axis.
+     * @return This styler instance for chaining.
+     */
+    public S translateXY(double translateX, double translateY) {
+        addStyle("-fx-translate-x", String.format(Locale.US, "%.2f", translateX));
+        addStyle("-fx-translate-y", String.format(Locale.US, "%.2f", translateY));
         return self();
     }
 
