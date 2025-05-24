@@ -5,6 +5,7 @@ import com.brunomnsilva.fluentfxcss.enums.TextOriginValue;
 import com.brunomnsilva.fluentfxcss.enums.UnitValue;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
@@ -254,6 +255,29 @@ public class CssHelper {
 
         String inducedType = type.toString().toLowerCase(Locale.ROOT);
         return inducedType.replace('_', '-');
+    }
+
+    /**
+     * Converts a JavaFX {@link BlendMode} enum to its corresponding CSS string representation.
+     * <p>
+     * The conversion follows the JavaFX CSS naming convention, which is typically lowercase
+     * with hyphens separating words (e.g., {@code SRC_OVER} becomes {@code "src-over"}).
+     * </p>
+     * If the provided {@code blendMode} is {@code null}, this method returns {@code "null"},
+     * as this is a common way to represent no value or reset in CSS.
+     *
+     * @param blendMode The {@link BlendMode} enum instance (e.g., {@code BlendMode.SRC_OVER}).
+     *                  Can be null.
+     * @return The CSS string for the blend mode (e.g., "src-over", "multiply"),
+     *         or {@code "null"} if the input {@code blendMode} is null.
+     * @see javafx.scene.effect.BlendMode
+     * @see <a href="https://openjfx.io/javadoc/23/javafx.graphics/javafx/scene/doc-files/cssref.html#node">JavaFX CSS Node Properties</a>
+     */
+    public static String toCssBlendMode(BlendMode blendMode) {
+        if (blendMode == null) {
+            return "null"; // Representing no blend mode or reset
+        }
+        return blendMode.name().toLowerCase(Locale.ROOT).replace('_', '-');
     }
 
     /**
