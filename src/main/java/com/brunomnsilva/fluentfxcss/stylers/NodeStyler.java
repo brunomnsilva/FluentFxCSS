@@ -90,7 +90,7 @@ public abstract class NodeStyler<S extends NodeStyler<S, D>, D extends StyleDefi
      * @param value The scale factor for both x and y-axis.
      * @return This styler instance for chaining.
      */
-    public S scaleXY(double value) {
+    public S scale(double value) {
         addStyle("-fx-scale-x", String.format(Locale.US, "%.2f", value));
         addStyle("-fx-scale-y", String.format(Locale.US, "%.2f", value));
         return self();
@@ -104,7 +104,7 @@ public abstract class NodeStyler<S extends NodeStyler<S, D>, D extends StyleDefi
      * @param scaleY The scale factor for the y-axis.
      * @return This styler instance for chaining.
      */
-    public S scaleXY(double scaleX, double scaleY) {
+    public S scale(double scaleX, double scaleY) {
         addStyle("-fx-scale-x", String.format(Locale.US, "%.2f", scaleX));
         addStyle("-fx-scale-y", String.format(Locale.US, "%.2f", scaleY));
         return self();
@@ -141,7 +141,7 @@ public abstract class NodeStyler<S extends NodeStyler<S, D>, D extends StyleDefi
      * @param value The translation distance for both x and y-axis.
      * @return This styler instance for chaining.
      */
-    public S translateXY(double value) {
+    public S translate(double value) {
         addStyle("-fx-translate-x", String.format(Locale.US, "%.2f", value));
         addStyle("-fx-translate-y", String.format(Locale.US, "%.2f", value));
         return self();
@@ -155,7 +155,7 @@ public abstract class NodeStyler<S extends NodeStyler<S, D>, D extends StyleDefi
      * @param translateY The translation distance for the y-axis.
      * @return This styler instance for chaining.
      */
-    public S translateXY(double translateX, double translateY) {
+    public S translate(double translateX, double translateY) {
         addStyle("-fx-translate-x", String.format(Locale.US, "%.2f", translateX));
         addStyle("-fx-translate-y", String.format(Locale.US, "%.2f", translateY));
         return self();
