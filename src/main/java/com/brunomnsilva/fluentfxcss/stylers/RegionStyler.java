@@ -399,6 +399,8 @@ public abstract class RegionStyler<S extends RegionStyler<S, D>, D extends Style
         return self();
     }
 
+    // -- -fx-shape related properties
+
     /**
      * Sets the {@code -fx-shape} CSS property, defining an SVG path string that
      * is used to clip the region's background and border.
@@ -445,6 +447,52 @@ public abstract class RegionStyler<S extends RegionStyler<S, D>, D extends Style
      */
     public S shape(SVGPath svgPath) {
         addStyle("-fx-shape", CssHelper.toCssSvgPath(svgPath));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-scale-shape} CSS property.
+     * <p>
+     * This property controls whether the defined {@code -fx-shape} is scaled to fit
+     * the size of the region.
+     * If {@code true} (the default), the shape is scaled to fit the region's bounds.
+     * If {@code false}, the shape is rendered at its natural size as defined by the SVG path.
+     * </p>
+     * This property only has an effect if {@code -fx-shape} is also set.
+     *
+     * @param scaleToFit {@code true} to scale the shape to the region's size,
+     *                   {@code false} to use the shape's natural size.
+     * @return This styler instance for chaining.
+     * @see #shape(String)
+     * @see <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html#region">JavaFX CSS Region (-fx-scale-shape)</a>
+     */
+    public S scaleShape(boolean scaleToFit) {
+        addStyle("-fx-scale-shape", String.valueOf(scaleToFit));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-position-shape} CSS property.
+     * <p>
+     * This property controls whether the defined {@code -fx-shape} is positioned
+     * relative to the region's top-left corner or relative to its center.
+     * If {@code true}, the shape is positioned relative to the center of the region.
+     * If {@code false} (the default), the shape is positioned relative to the top-left
+     * corner of the region.
+     * </p>
+     * This property only has an effect if {@code -fx-shape} is also set and
+     * {@code -fx-scale-shape} is {@code false} (i.e., the shape is not being scaled to fit).
+     * If the shape is scaled to fit, its position is inherently determined by the scaling.
+     *
+     * @param centerPositioned {@code true} to position the shape relative to the region's center,
+     *                         {@code false} to position relative to the top-left corner.
+     * @return This styler instance for chaining.
+     * @see #shape(String)
+     * @see #scaleShape(boolean)
+     * @see <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html#region">JavaFX CSS Region (-fx-position-shape)</a>
+     */
+    public S positionShape(boolean centerPositioned) {
+        addStyle("-fx-position-shape", String.valueOf(centerPositioned));
         return self();
     }
 
