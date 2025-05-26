@@ -1,6 +1,9 @@
 package com.brunomnsilva.fluentfxcss;
 
 import com.brunomnsilva.fluentfxcss.definitions.StyleDefinition;
+import com.brunomnsilva.fluentfxcss.enums.BackgroundPositionValue;
+import com.brunomnsilva.fluentfxcss.enums.BackgroundRepeatValue;
+import com.brunomnsilva.fluentfxcss.enums.BackgroundSizeValue;
 import com.brunomnsilva.fluentfxcss.enums.UnitValue;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -8,6 +11,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.layout.Pane; // For the new Pane
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.*;
 import javafx.scene.shape.Circle;
@@ -105,12 +109,26 @@ public class FluentFxCssDemo extends Application {
         System.out.println("Title Text Style CSS: " + textStyle.toCssInline());
         System.out.println("Line Style CSS: " + lineStyle.toCssInline());
 
+        // --- Style for a Region with a background image ---
+        StyleDefinition backgroundImageRegionStyle = FluentFxCss.regionStyle()
+                .backgroundImage("https://picsum.photos/seed/fluentfxcss/400/300")
+                .backgroundRepeat(BackgroundRepeatValue.NO_REPEAT)
+                .backgroundPosition(BackgroundPositionValue.CENTER_CENTER)
+                .backgroundSize(BackgroundSizeValue.COVER)
+                .borderColor(Color.STEELBLUE)
+                .borderWidth(2)
+                .build();
+
+        System.out.println("Background Image Region Style CSS: " + backgroundImageRegionStyle.toCssInline());
+
 
         // --- Create UI Elements ---
         Text titleText = new Text("FluentFxCSS Demo");
         Circle circle = new Circle(50); // Radius 50
         Rectangle rectangle = new Rectangle(100, 70); // Width 100, Height 70
         Line line = new Line(0, 0, 150, 0); // Horizontal line
+        Pane backgroundImagePane = new Pane();
+        backgroundImagePane.setPrefSize(200, 150); // Set a preferred size to see the background
 
         // --- Apply Inline Styles ---
         System.out.println("\n--- Applying Inline Styles ---");
@@ -118,6 +136,7 @@ public class FluentFxCssDemo extends Application {
         circleStyle.applyTo(circle);
         rectangleStyle.applyTo(rectangle);
         lineStyle.applyTo(line);
+        backgroundImageRegionStyle.applyTo(backgroundImagePane);
 
         // --- Demonstrate CSS Class Generation & Usage ---
         System.out.println("\n--- Generating CSS Class Rules ---");
@@ -147,7 +166,7 @@ public class FluentFxCssDemo extends Application {
         rootLayout.setAlignment(Pos.CENTER);
         rootPaneStyle.applyTo(rootLayout); // Apply root style to VBox
 
-        VBox shapesBox = new VBox(20, circle, rectangle, styledButton); // Group shapes
+        VBox shapesBox = new VBox(20, circle, rectangle, styledButton, backgroundImagePane); // Group shapes
         shapesBox.setAlignment(Pos.CENTER);
 
         rootLayout.getChildren().addAll(titleText, shapesBox, line);
