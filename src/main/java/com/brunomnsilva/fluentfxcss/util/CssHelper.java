@@ -5,6 +5,7 @@ import com.brunomnsilva.fluentfxcss.enums.TextOriginValue;
 import com.brunomnsilva.fluentfxcss.enums.UnitValue;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
@@ -257,6 +258,29 @@ public class CssHelper {
     }
 
     /**
+     * Converts a JavaFX {@link BlendMode} enum to its corresponding CSS string representation.
+     * <p>
+     * The conversion follows the JavaFX CSS naming convention, which is typically lowercase
+     * with hyphens separating words (e.g., {@code SRC_OVER} becomes {@code "src-over"}).
+     * </p>
+     * If the provided {@code blendMode} is {@code null}, this method returns {@code "null"},
+     * as this is a common way to represent no value or reset in CSS.
+     *
+     * @param blendMode The {@link BlendMode} enum instance (e.g., {@code BlendMode.SRC_OVER}).
+     *                  Can be null.
+     * @return The CSS string for the blend mode (e.g., "src-over", "multiply"),
+     *         or {@code "null"} if the input {@code blendMode} is null.
+     * @see javafx.scene.effect.BlendMode
+     * @see <a href="https://openjfx.io/javadoc/23/javafx.graphics/javafx/scene/doc-files/cssref.html#node">JavaFX CSS Node Properties</a>
+     */
+    public static String toCssBlendMode(BlendMode blendMode) {
+        if (blendMode == null) {
+            return "null"; // Representing no blend mode or reset
+        }
+        return blendMode.name().toLowerCase(Locale.ROOT).replace('_', '-');
+    }
+
+    /**
      * Converts a {@link Cursor} to a CSS cursor name.
      *
      * @param cursor the JavaFX {@code Cursor}
@@ -416,6 +440,28 @@ public class CssHelper {
     public static String toCssStrokeLineJoin(StrokeLineJoin type) {
         if (type == null) return "miter";
         return type.name().toLowerCase(Locale.ROOT);
+    }
+
+    /**
+     * Converts a URL string into a CSS {@code url(...)} function string.
+     * <p>
+     * If the input URL is null or blank, this method returns {@code "none"},
+     * which is typically used in CSS to indicate no image or resource.
+     * Otherwise, the URL is wrapped, e.g., {@code url("http://example.com/image.png")}.
+     * Quotes are added around the URL as is common practice, though not always
+     * strictly required by all CSS parsers for all URL syntaxes.
+     * </p>
+     *
+     * @param url The URL string to be formatted. Can be null or blank.
+     * @return The CSS {@code url(...)} function string, or {@code "none"} if the URL is null/blank.
+     */
+    public static String toCssUrl(String url) {
+        if (url == null || url.isBlank()) {
+            return "none";
+        }
+        // Ensure quotes around the URL, escaping existing quotes if necessary,
+        // though for typical URLs, this direct wrapping is usually fine.
+        return String.format("url(\"%s\")", url.trim());
     }
 
     /**

@@ -5,6 +5,7 @@ import com.brunomnsilva.fluentfxcss.util.Args;
 import com.brunomnsilva.fluentfxcss.util.CssHelper;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.InnerShadow;
@@ -56,6 +57,121 @@ public abstract class NodeStyler<S extends NodeStyler<S, D>, D extends StyleDefi
      * Base constructor.
      */
     protected NodeStyler() {
+    }
+
+    /**
+     * Sets the {@code -fx-scale-x} CSS property.
+     * Controls the scale of the node on the x-axis.
+     *
+     * @param value The scale factor for the x-axis.
+     * @return This styler instance for chaining.
+     */
+    public S scaleX(double value) {
+        addStyle("-fx-scale-x", String.format(Locale.US, "%.2f", value));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-scale-y} CSS property.
+     * Controls the scale of the node on the y-axis.
+     *
+     * @param value The scale factor for the y-axis.
+     * @return This styler instance for chaining.
+     */
+    public S scaleY(double value) {
+        addStyle("-fx-scale-y", String.format(Locale.US, "%.2f", value));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-scale-x} and {@code -fx-scale-y} CSS properties to the same value,
+     * scaling the node uniformly in X and Y dimensions.
+     *
+     * @param value The scale factor for both x and y-axis.
+     * @return This styler instance for chaining.
+     */
+    public S scale(double value) {
+        addStyle("-fx-scale-x", String.format(Locale.US, "%.2f", value));
+        addStyle("-fx-scale-y", String.format(Locale.US, "%.2f", value));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-scale-x} and {@code -fx-scale-y} CSS properties,
+     * scaling the node in X and Y dimensions respectively.
+     *
+     * @param scaleX The scale factor for the x-axis.
+     * @param scaleY The scale factor for the y-axis.
+     * @return This styler instance for chaining.
+     */
+    public S scale(double scaleX, double scaleY) {
+        addStyle("-fx-scale-x", String.format(Locale.US, "%.2f", scaleX));
+        addStyle("-fx-scale-y", String.format(Locale.US, "%.2f", scaleY));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-translate-x} CSS property.
+     * Controls the translation of the node on the x-axis.
+     *
+     * @param value The translation distance for the x-axis.
+     * @return This styler instance for chaining.
+     */
+    public S translateX(double value) {
+        addStyle("-fx-translate-x", String.format(Locale.US, "%.2f", value));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-translate-y} CSS property.
+     * Controls the translation of the node on the y-axis.
+     *
+     * @param value The translation distance for the y-axis.
+     * @return This styler instance for chaining.
+     */
+    public S translateY(double value) {
+        addStyle("-fx-translate-y", String.format(Locale.US, "%.2f", value));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-translate-x} and {@code -fx-translate-y} CSS properties to the same value,
+     * translating the node uniformly in X and Y dimensions.
+     *
+     * @param value The translation distance for both x and y-axis.
+     * @return This styler instance for chaining.
+     */
+    public S translate(double value) {
+        addStyle("-fx-translate-x", String.format(Locale.US, "%.2f", value));
+        addStyle("-fx-translate-y", String.format(Locale.US, "%.2f", value));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-translate-x} and {@code -fx-translate-y} CSS properties,
+     * translating the node in X and Y dimensions respectively.
+     *
+     * @param translateX The translation distance for the x-axis.
+     * @param translateY The translation distance for the y-axis.
+     * @return This styler instance for chaining.
+     */
+    public S translate(double translateX, double translateY) {
+        addStyle("-fx-translate-x", String.format(Locale.US, "%.2f", translateX));
+        addStyle("-fx-translate-y", String.format(Locale.US, "%.2f", translateY));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-blend-mode} CSS property.
+     * Sets the blending mode for the node.
+     *
+     * @param blendMode The blend mode to apply. See {@link javafx.scene.effect.BlendMode} for possible values.
+     * @return This styler instance for chaining.
+     */
+    public S blendMode(BlendMode blendMode) {
+        Args.requireNotNull(blendMode, "blendMode");
+        addStyle("-fx-blend-mode", CssHelper.toCssBlendMode(blendMode));
+        return self();
     }
 
     /**
