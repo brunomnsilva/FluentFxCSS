@@ -1,6 +1,9 @@
 package com.brunomnsilva.fluentfxcss.stylers;
 
 import com.brunomnsilva.fluentfxcss.definitions.StyleDefinition;
+import com.brunomnsilva.fluentfxcss.enums.BackgroundPositionValue;
+import com.brunomnsilva.fluentfxcss.enums.BackgroundRepeatValue;
+import com.brunomnsilva.fluentfxcss.enums.BackgroundSizeValue;
 import com.brunomnsilva.fluentfxcss.enums.BorderStyleValue;
 import com.brunomnsilva.fluentfxcss.enums.UnitValue;
 import com.brunomnsilva.fluentfxcss.util.Args;
@@ -134,6 +137,89 @@ public abstract class RegionStyler<S extends RegionStyler<S, D>, D extends Style
     public S backgroundRadius(UnitValue unit, double topLeft, double topRight, double bottomRight, double bottomLeft) {
         Args.requireNotNull(unit, "unit");
         addStyle("-fx-background-radius", CssHelper.toDoubleArrayString(unit, topLeft, topRight, bottomRight, bottomLeft));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-background-image} CSS property.
+     * Specifies the URL of the background image.
+     *
+     * @param url The URL of the background image. If null or blank, "none" will be used.
+     * @return This styler instance for chaining.
+     */
+    public S backgroundImage(String url) {
+        addStyle("-fx-background-image", CssHelper.toCssUrl(url));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-background-position} CSS property using predefined enum values.
+     * Defines the initial position of the background image.
+     *
+     * @param position A {@link BackgroundPositionValue} enum constant (e.g., {@code BackgroundPositionValue.CENTER_CENTER}). Must not be null.
+     * @return This styler instance for chaining.
+     */
+    public S backgroundPosition(BackgroundPositionValue position) {
+        Args.requireNotNull(position, "position");
+        addStyle("-fx-background-position", position.getCssValue());
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-background-position} CSS property using a custom string value.
+     * Defines the initial position of the background image. This allows for values
+     * not covered by the {@link BackgroundPositionValue} enum, such as specific
+     * percentages or length units (e.g., "50% 50%", "10px 20px").
+     *
+     * @param position The CSS string for the background position (e.g., "center", "top left", "25% 75%"). Must not be null or blank.
+     * @return This styler instance for chaining.
+     */
+    public S backgroundPosition(String position) {
+        Args.requireNotNull(position, "position");
+        Args.requireNotEmpty(position, "position"); // Ensure the string is not empty
+        addStyle("-fx-background-position", position);
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-background-repeat} CSS property.
+     * Defines how the background image is repeated.
+     *
+     * @param repeat A {@link BackgroundRepeatValue} enum constant (e.g., {@code BackgroundRepeatValue.NO_REPEAT}). Must not be null.
+     * @return This styler instance for chaining.
+     */
+    public S backgroundRepeat(BackgroundRepeatValue repeat) {
+        Args.requireNotNull(repeat, "repeat");
+        addStyle("-fx-background-repeat", repeat.getCssValue());
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-background-size} CSS property using predefined enum values.
+     * Defines the size of the background image.
+     *
+     * @param size A {@link BackgroundSizeValue} enum constant (e.g., {@code BackgroundSizeValue.COVER}). Must not be null.
+     * @return This styler instance for chaining.
+     */
+    public S backgroundSize(BackgroundSizeValue size) {
+        Args.requireNotNull(size, "size");
+        addStyle("-fx-background-size", size.getCssValue());
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-background-size} CSS property using a custom string value.
+     * Defines the size of the background image. This allows for values not covered
+     * by the {@link BackgroundSizeValue} enum, such as specific length or
+     * percentage pairs (e.g., "100px auto", "50% 25%").
+     *
+     * @param size The CSS string for the background size (e.g., "auto", "cover", "100px 50%"). Must not be null or blank.
+     * @return This styler instance for chaining.
+     */
+    public S backgroundSize(String size) {
+        Args.requireNotNull(size, "size");
+        Args.requireNotEmpty(size, "size"); // Ensure the string is not empty
+        addStyle("-fx-background-size", size);
         return self();
     }
 
