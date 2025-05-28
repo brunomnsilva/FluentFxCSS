@@ -96,14 +96,11 @@ Adds properties specific to `javafx.scene.layout.Region` nodes. Includes all `No
 | `-fx-border-width`        | `.borderWidth(double width)` / `..(UnitValue, ...)`         |
 | `-fx-border-radius`       | `.borderRadius(double radius)` / `..(UnitValue, ...)`       |
 | `-fx-shape`               | `.shape(String svgPath)`                                    |
-
-<!--
 | `-fx-background-image`    | `.backgroundImage(String url)`                              |
-| `-fx-background-repeat`   | `.backgroundRepeat(BackgroundRepeat x, BackgroundRepeat y)` |
+| `-fx-background-repeat`   | `.backgroundRepeat(BackgroundRepeatValue x, BackgroundRepeatValue y)` |
 | `-fx-background-position` | `.backgroundPosition(...)` (simplified or string)           |
-| `-fx-background-size`     | `.backgroundSize(BackgroundSize size)` / `..(String)`       |
+| `-fx-background-size`     | `.backgroundSize(BackgroundSizeValue size)`        |
 | `-fx-background-insets`   | `.backgroundInsets(Insets insets)` / `..(values)`           |
--->
 
 </details>
 

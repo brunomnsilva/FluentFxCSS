@@ -81,6 +81,125 @@ public abstract class RegionStyler<S extends RegionStyler<S, D>, D extends Style
     }
 
     /**
+     * Sets the {@code -fx-background-insets} CSS property for all four sides with a single value,
+     * assuming pixel units.
+     * <p>
+     * Background insets define the distance from the edge of the region to the edge
+     * of the background. This is particularly useful when using multiple backgrounds
+     * to create layered effects or when you want the background to be smaller than the region.
+     * </p>
+     *
+     * @param allSides The inset value for all sides (top, right, bottom, left) in pixels.
+     * @return This styler instance for chaining.
+     * @see <a href="https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html#region">JavaFX CSS Region (-fx-background-insets)</a>
+     */
+    public S backgroundInsets(double allSides) {
+        return backgroundInsets(UnitValue.PX, allSides);
+    }
+
+    /**
+     * Sets the {@code -fx-background-insets} CSS property for all four sides with a single value
+     * and a specified unit.
+     *
+     * @param unit     The unit for the inset value.
+     * @param allSides The inset value for all sides.
+     * @return This styler instance for chaining.
+     * @throws IllegalArgumentException if unit is null.
+     */
+    public S backgroundInsets(UnitValue unit, double allSides) {
+        Args.requireNotNull(unit, "unit");
+        addStyle("-fx-background-insets", CssHelper.toDoubleString(unit, allSides));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-background-insets} CSS property with two values, assuming pixel units.
+     * The first value applies to top/bottom, the second to left/right.
+     *
+     * @param topBottom The inset for top and bottom sides in pixels.
+     * @param leftRight The inset for left and right sides in pixels.
+     * @return This styler instance for chaining.
+     */
+    public S backgroundInsets(double topBottom, double leftRight) {
+        return backgroundInsets(UnitValue.PX, topBottom, leftRight);
+    }
+
+    /**
+     * Sets the {@code -fx-background-insets} CSS property with two values and a specified unit.
+     * The first value applies to top/bottom, the second to left/right.
+     *
+     * @param unit      The unit for the inset values.
+     * @param topBottom The inset for top and bottom sides.
+     * @param leftRight The inset for left and right sides.
+     * @return This styler instance for chaining.
+     * @throws IllegalArgumentException if unit is null.
+     */
+    public S backgroundInsets(UnitValue unit, double topBottom, double leftRight) {
+        Args.requireNotNull(unit, "unit");
+        addStyle("-fx-background-insets", CssHelper.toDoubleArrayString(unit, topBottom, leftRight));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-background-insets} CSS property with four values (top, right, bottom, left),
+     * assuming pixel units.
+     *
+     * @param top    The inset for the top side in pixels.
+     * @param right  The inset for the right side in pixels.
+     * @param bottom The inset for the bottom side in pixels.
+     * @param left   The inset for the left side in pixels.
+     * @return This styler instance for chaining.
+     */
+    public S backgroundInsets(double top, double right, double bottom, double left) {
+        return backgroundInsets(UnitValue.PX, top, right, bottom, left);
+    }
+
+    /**
+     * Sets the {@code -fx-background-insets} CSS property with four values (top, right, bottom, left)
+     * and a specified unit.
+     *
+     * @param unit   The unit for the inset values.
+     * @param top    The inset for the top side.
+     * @param right  The inset for the right side.
+     * @param bottom The inset for the bottom side.
+     * @param left   The inset for the left side.
+     * @return This styler instance for chaining.
+     */
+    public S backgroundInsets(UnitValue unit, double top, double right, double bottom, double left) {
+        addStyle("-fx-background-insets", CssHelper.toDoubleArrayString(unit, top, right, bottom, left));
+        return self();
+    }
+
+    /**
+     * Sets the {@code -fx-background-insets} CSS property using a JavaFX {@link Insets} object,
+     * assuming pixel units.
+     *
+     * @param insets The {@link Insets} object defining the background insets. Must not be null.
+     * @return This styler instance for chaining.
+     * @throws IllegalArgumentException if insets is null.
+     */
+    public S backgroundInsets(Insets insets) {
+        Args.requireNotNull(insets, "insets");
+        return backgroundInsets(UnitValue.PX, insets.getTop(), insets.getRight(), insets.getBottom(), insets.getLeft());
+    }
+
+    /**
+     * Sets the {@code -fx-background-insets} CSS property using a JavaFX {@link Insets} object
+     * with a specified unit.
+     *
+     * @param unit   The unit for the inset values derived from the {@code Insets} object.
+     * @param insets The {@link Insets} object defining the background insets. Must not be null.
+     * @return This styler instance for chaining.
+     * @throws IllegalArgumentException if insets is null or unit is null.
+     */
+    public S backgroundInsets(UnitValue unit, Insets insets) {
+        Args.requireNotNull(unit, "unit");
+        Args.requireNotNull(insets, "insets");
+        addStyle("-fx-background-insets", CssHelper.toDoubleArrayString(unit, insets.getTop(), insets.getRight(), insets.getBottom(), insets.getLeft()));
+        return self();
+    }
+
+    /**
      * Sets the {@code -fx-background-radius} CSS property for all corners, assuming pixel units.
      * This defines the radii of the corners of the background.
      *
