@@ -443,6 +443,28 @@ public class CssHelper {
     }
 
     /**
+     * Converts a URL string into a CSS {@code url(...)} function string.
+     * <p>
+     * If the input URL is null or blank, this method returns {@code "none"},
+     * which is typically used in CSS to indicate no image or resource.
+     * Otherwise, the URL is wrapped, e.g., {@code url("http://example.com/image.png")}.
+     * Quotes are added around the URL as is common practice, though not always
+     * strictly required by all CSS parsers for all URL syntaxes.
+     * </p>
+     *
+     * @param url The URL string to be formatted. Can be null or blank.
+     * @return The CSS {@code url(...)} function string, or {@code "none"} if the URL is null/blank.
+     */
+    public static String toCssUrl(String url) {
+        if (url == null || url.isBlank()) {
+            return "none";
+        }
+        // Ensure quotes around the URL, escaping existing quotes if necessary,
+        // though for typical URLs, this direct wrapping is usually fine.
+        return String.format("url(\"%s\")", url.trim());
+    }
+
+    /**
      * Converts an array of {@code double} values into a CSS string, appending the given unit to each value.
      * Values are formatted with 2 decimal places and separated by spaces.
      * If {@code unit} is {@code null}, {@code UnitValue.PX} is used as default.

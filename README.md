@@ -86,26 +86,21 @@ Adds properties specific to `javafx.scene.layout.Region` nodes. Includes all `No
 
 🗏 [JavaFX CSS Reference](https://openjfx.io/javadoc/11/javafx.graphics/javafx/scene/doc-files/cssref.html#region)
 
-| CSS Property            | Fluent Methods 🥉                                         |
-|-------------------------|-----------------------------------------------------------|
-| `-fx-background-color`  | `.backgroundColor(Paint paint)`                           |
-| `-fx-background-radius` | `.backgroundRadius(double radius)` / `..(UnitValue, ...)` |
-| `-fx-padding`           | `.padding(double allSides)` / `..(UnitValue, ...)`        |
-| `-fx-border-color`      | `.borderColor(Color color)` / `..(colors...)`             |
-| `-fx-border-style`      | `.borderStyle(BorderStyleValue style)` / `..(styles...)`  |
-| `-fx-border-width`      | `.borderWidth(double width)` / `..(UnitValue, ...)`       |
-| `-fx-border-radius`     | `.borderRadius(double radius)` / `..(UnitValue, ...)`     |
-| `-fx-shape`             | `.shape(String svgPath)`                                  |
-| `-fx-position-shape`    | `.positionShape(boolean centerPositioned)`                |
-| `-fx-scale-shape`       | `.scaleShape(boolean scaleToFit)`                         |
-| `-fx-background-insets`   | `.backgroundInsets(Insets insets)` / `..(values)`           |
-
-<!--
+| CSS Property              | Fluent Methods 🥉                                             |
+|---------------------------|-------------------------------------------------------------|
+| `-fx-background-color`    | `.backgroundColor(Paint paint)`                             |
+| `-fx-background-radius`   | `.backgroundRadius(double radius)` / `..(UnitValue, ...)`   |
+| `-fx-padding`             | `.padding(double allSides)` / `..(UnitValue, ...)`          |
+| `-fx-border-color`        | `.borderColor(Color color)` / `..(colors...)`               |
+| `-fx-border-style`        | `.borderStyle(BorderStyleValue style)` / `..(styles...)`    |
+| `-fx-border-width`        | `.borderWidth(double width)` / `..(UnitValue, ...)`         |
+| `-fx-border-radius`       | `.borderRadius(double radius)` / `..(UnitValue, ...)`       |
+| `-fx-shape`               | `.shape(String svgPath)`                                    |
 | `-fx-background-image`    | `.backgroundImage(String url)`                              |
-| `-fx-background-repeat`   | `.backgroundRepeat(BackgroundRepeat x, BackgroundRepeat y)` |
+| `-fx-background-repeat`   | `.backgroundRepeat(BackgroundRepeatValue x, BackgroundRepeatValue y)` |
 | `-fx-background-position` | `.backgroundPosition(...)` (simplified or string)           |
-| `-fx-background-size`     | `.backgroundSize(BackgroundSize size)` / `..(String)`       |
--->
+| `-fx-background-size`     | `.backgroundSize(BackgroundSizeValue size)`        |
+| `-fx-background-insets`   | `.backgroundInsets(Insets insets)` / `..(values)`           |
 
 </details>
 

@@ -1,6 +1,9 @@
 package com.brunomnsilva.fluentfxcss;
 
 import com.brunomnsilva.fluentfxcss.definitions.StyleDefinition;
+import com.brunomnsilva.fluentfxcss.enums.BackgroundPositionValue;
+import com.brunomnsilva.fluentfxcss.enums.BackgroundRepeatValue;
+import com.brunomnsilva.fluentfxcss.enums.BackgroundSizeValue;
 import com.brunomnsilva.fluentfxcss.enums.UnitValue;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -8,6 +11,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.layout.Pane; // For the new Pane
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.*;
 import javafx.scene.shape.Circle;
@@ -36,7 +40,7 @@ public class FluentFxCssDemo extends Application {
         LinearGradient lg = new LinearGradient(
                 0, 0, 1, 1, true, CycleMethod.NO_CYCLE,
                 Arrays.asList(
-                        new Stop(0, Color.WHITE),
+                        new Stop(0, Color.MEDIUMSEAGREEN),
                         new Stop(1, Color.DARKGRAY)
                 )
         );
@@ -46,7 +50,11 @@ public class FluentFxCssDemo extends Application {
 
         // Style for the main container/root pane
         StyleDefinition rootPaneStyle = FluentFxCss.paneStyle()
-                .backgroundColor(lg)
+                //.backgroundColor(lg)
+                .backgroundImage("https://picsum.photos/seed/fluentfxcss/400/300")
+                .backgroundRepeat(BackgroundRepeatValue.NO_REPEAT)
+                .backgroundPosition(BackgroundPositionValue.CENTER_CENTER)
+                .backgroundSize(BackgroundSizeValue.COVER)
                 .padding(20) // Assuming PX default
                 .shape("M50,0 A50,50 0 1 1 49.9,0 Z") // Circle
                 .build();
@@ -95,9 +103,9 @@ public class FluentFxCssDemo extends Application {
         StyleDefinition lineStyle = FluentFxCss.shapeStyle()
                 .strokeWidth(4)
                 .strokeLineCap(StrokeLineCap.ROUND)
-                .stroke(Color.SLATEGRAY)
+                .stroke(Color.WHITESMOKE)
                 .strokeDashArray(10, 8) // Simple dash array
-                .opacity(0.6)
+                .opacity(0.9)
                 .build();
 
         System.out.println("Circle Style CSS: " + circleStyle.toCssInline());
@@ -125,7 +133,7 @@ public class FluentFxCssDemo extends Application {
         // Style for a 'button-like' element on hover
         StyleDefinition hoverEffectStyle = FluentFxCss.shapeStyle()
                 .opacity(1.0) // Fully opaque on hover
-                .fill(Color.LIGHTCORAL) // Change fill color
+                .fill(lg) // Change fill color
                 .build();
 
         String baseButtonClassCss = commonStyle.toCssClass("interactive-button");
