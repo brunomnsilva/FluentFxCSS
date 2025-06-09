@@ -9,6 +9,7 @@ module com.brunomnsilva.fluentfxcss {
     exports com.brunomnsilva.fluentfxcss;
     exports com.brunomnsilva.fluentfxcss.definitions;
     exports com.brunomnsilva.fluentfxcss.stylers;
+    exports com.brunomnsilva.fluentfxcss.stylers.concrete;
     exports com.brunomnsilva.fluentfxcss.enums;
     exports com.brunomnsilva.fluentfxcss.util;
 }
