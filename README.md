@@ -18,7 +18,7 @@ FluentFxCSS provides a fluent, type-safe builder API to programmatically constru
 
 :warning: Requires JDK 11, or above.
 
-Example for Maven and Gradle, where `x.y.z` is the library version, e.g., `1.0.0`:
+Example for Maven and Gradle, where `x.y.z` is the library version, e.g., `1.2.0`:
 
 **Maven Example:**
 
